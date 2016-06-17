@@ -1,0 +1,17 @@
+// --------------------------------------------------------------------------
+// breakpoint.sass
+// --------------------------------------------------------------------------
+// This mixin outputs a media query, based of the variable passed to it
+// --------------------------------------------------------------------------
+
+=breakpoint($name)
+  @if map-has-key($breakpoints, $name)
+    $key: map-get($breakpoints, $name)
+    @media screen and (max-width: $key + 'px')
+      @content
+  @else
+    @if type_of($name) == "number"
+      @media screen and (max-width: $name + 'px')
+        @content
+    @else
+      @warn "Warning: `#{$name}` is not a valid breakpoint name."
