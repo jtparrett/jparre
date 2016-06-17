@@ -1,0 +1,45 @@
+.select
+  position: relative
+  border: 2px solid #000
+  display: inline-block
+  z-index: 1
+  overflow: hidden
+
+  &:after
+    +position(absolute, 50% 0px null null)
+    +size(8px)
+    +transform(translateY(-50%) rotate(45deg))
+    +margin(-3px 10px null null)
+    border-bottom: 2px solid #000
+    border-right: 2px solid #000
+    content: ""
+    z-index: -1
+
+  select
+    +padding(5px 10px)
+    +appearance(none)
+    @extend %copy
+    line-height: initial
+    font-weight: 600
+    font-size: 12px
+    border: 0
+    background: transparent
+    outline: none
+    cursor: pointer
+    padding-right: 63px
+    margin-right: -30px
+
+@-moz-document url-prefix() 
+  .select
+    overflow: hidden
+  .select select
+    width: 120%
+    width: -moz-calc(100% + 3em)
+    width: calc(100% + em)
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)
+  .select select::-ms-expand
+    display: none
+  .select select:focus::-ms-value
+    background: transparent
+    color: #222

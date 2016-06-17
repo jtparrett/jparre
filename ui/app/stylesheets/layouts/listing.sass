@@ -1,0 +1,14 @@
+.listing
+  @extend %list
+  +display(flex)
+  +flex-wrap(wrap)
+  +justify-content(center)
+  +margin(-40px -40px null null)
+
+  > *
+    +flex(none)
+    +margin(40px 40px null null)
+
+  img
+    display: block
+    max-width: 100%
