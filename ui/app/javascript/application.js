@@ -12,10 +12,9 @@ $(function() {
 
   'use strict';
 
-  var modules = ['exampleModule'];
-
-  for(var i = 0; i < modules.length; i++) {
-    RN[modules[i]].init();
-  }
+  byBehaviour('product-images').slick({
+    arrows: false,
+    adaptiveHeight: true
+  });
 
 });
