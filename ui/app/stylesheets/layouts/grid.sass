@@ -1,0 +1,30 @@
+.grid
+  @extend %list
+  +margin(-20px -20px null null)
+
+  &:after
+    content: ""
+    display: block
+    clear: both
+
+  &__item
+    +margin(20px 20px null null)
+    width: calc(25% - 20px)
+    float: left
+
+    &--large
+      width: calc(50% - 20px)
+
+    &--end
+      float: right
+
+    img
+      display: block
+      width: 100%
+
+  +breakpoint(small)
+    &__item
+      width: calc(50% - 20px)
+
+      &--large
+        width: calc(100% - 20px)

@@ -1,0 +1,33 @@
+.banner
+  width: 100%
+  min-height: 100%
+  background-image: url('../images/content/home-banner.jpg')
+  background-size: cover
+  background-position: center
+  box-sizing: border-box
+  border: 20px solid #fff
+  display: table
+
+  &__header
+    +padding(25px null)
+    display: table-cell
+    vertical-align: middle
+    text-align: center
+
+  &__logo
+    +margin(null auto 20px)
+    width: 80px
+    display: block
+
+    img
+      width: 100%
+      display: block
+
+  &__title
+    @extend %heading
+    text-transform: uppercase
+    padding-bottom: 20px
+
+  &__copy
+    @extend %copy
+    padding-bottom: 25px
