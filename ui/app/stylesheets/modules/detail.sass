@@ -1,0 +1,19 @@
+.detail
+  +padding(40px 20px null)
+
+  &__title
+    @extend %heading
+    padding-bottom: 20px
+
+  &__copy
+    @extend %copy
+    padding-bottom: 20px
+
+  &__actions
+    width: 160px
+
+    > *
+      margin-top: 10px
+
+  +breakpoint(small)
+    +padding(20px 0px)

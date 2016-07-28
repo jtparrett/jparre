@@ -3,40 +3,49 @@
   "template": "application"
 }
 
-<section class="wrapper">
-  <article class="product">
-    <div class="product__image" data-behaviour="product-images">
+
+<section class="section">
+  <div class="wrapper">
+    <article class="grid grid--2-columns">
       <div>
-        <img src="app/images/content/product.png" />
+
+        <ul class="grid grid--2-columns grid--late">
+          <li class="grid__double">
+            <img src="app/images/content/product-green-stack.jpg" data-behaviour="big-product" />
+          </li>
+
+          <li>
+            <img src="app/images/content/product-long-black-stack.jpg" data-behaviour="small-product" />
+          </li>
+
+          <li>
+            <img src="app/images/content/product-long-white.jpg" data-behaviour="small-product" />
+          </li>
+        </ul>
       </div>
 
       <div>
-        <img src="app/images/content/product.png" />
-      </div>
+        <div class="detail">
+          <h1 class="detail__title">Pow hello you</h1>
+          <p class="detail__copy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea quo voluptatibus voluptates atque nostrum explicabo incidunt modi quidem vitae illo laborum perferendis.</p>
 
-      <div>
-        <img src="app/images/content/product.png" />
-      </div>
-    </div>
+          <form class="detail__actions">
+            <select data-behaviour="select">
+              <option>white</option>
+              <option>Khaki</option>
+              <option>Navy</option>
+            </select>
 
-    <header class="product__content">
-      <h1 class="product__title">White Logo T</h1>
-      <p class="product__copy">The original J.Parré logo t, freshly screen printed on the finest 100% cotton t-shirt.</p>
-    
-      <div class="product__actions">
-        <div class="select">
-          <select>
-            <option>Small</option>
-            <option>Medium</option>
-            <option>Large</option>
-          </select>
+            <select data-behaviour="select">
+              <option>Small</option>
+              <option>Medium</option>
+              <option>Large</option>
+            </select>
+
+            <button type="submit" class="button">Add to Cart</button>
+          </form>
         </div>
-        <span class="product__price">&pound;24.49</span>
       </div>
-
-      <footer>
-        <a href="#" class="button">Buy Now</a>
-      </footer>
-    </header>
-  </article>
+    </article>
+  </div>
 </section>

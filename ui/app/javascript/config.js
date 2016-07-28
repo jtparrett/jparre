@@ -1,6 +1,6 @@
 'use strict';
 
-var RN = window.RN || {};
+var JP = window.JP || {};
 
 function byBehaviour(selector) {
   return $('[data-behaviour="' + selector + '"]');

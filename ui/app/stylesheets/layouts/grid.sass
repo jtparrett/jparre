@@ -7,24 +7,32 @@
     display: block
     clear: both
 
-  &__item
+  > *
     +margin(20px 20px null null)
-    width: calc(25% - 20px)
     float: left
 
-    &--large
+  &--2-columns > *
+    width: calc(50% - 20px)
+
+    &.grid__double
+      width: calc(100% - 20px)
+
+  &--4-columns > *
+    width: calc(25% - 20px)
+
+    &.grid__double
       width: calc(50% - 20px)
 
-    &--end
-      float: right
+  &__end
+    float: right
 
-    img
-      display: block
-      width: 100%
+  img
+    display: block
+    width: 100%
 
   +breakpoint(small)
-    &__item
-      width: calc(50% - 20px)
+    &--2-columns:not(&--late) > *
+      width: calc(100% - 20px)
 
-      &--large
-        width: calc(100% - 20px)
+    &--4-columns > *
+      width: calc(50% - 20px)

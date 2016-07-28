@@ -12,9 +12,8 @@ $(function() {
 
   'use strict';
 
-  byBehaviour('product-images').slick({
-    arrows: false,
-    adaptiveHeight: true
-  });
+  JP.product.init();
+  byBehaviour('select').selectron();
+
 
 });
