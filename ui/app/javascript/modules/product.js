@@ -6,7 +6,6 @@ JP.product = function(){
   }
 
   function change(){
-    console.log('pow');
     var $this = $(this);
     var src = $this.attr('src');
 

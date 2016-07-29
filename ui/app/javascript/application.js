@@ -13,7 +13,8 @@ $(function() {
   'use strict';
 
   JP.product.init();
-  byBehaviour('select').selectron();
+  $('.selector-wrapper select').selectron();
+  $('.selector-wrapper label').remove();
 
 
 });

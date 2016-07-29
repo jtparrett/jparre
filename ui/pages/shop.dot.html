@@ -1,8 +1,3 @@
-{
-  "title": "Page Title",
-  "template": "application"
-}
-
 <section class="section">
   <div class="wrapper">
     <header class="banner">
@@ -13,37 +8,42 @@
 
     <ul class="grid grid--4-columns">
       <li class="grid__double">
-        <a href="detail.html">
-          <img src="app/images/content/product-green-stack.jpg" />
+        <a href="{{ collection.products[0].url %}}">
+          <img src="{{ 'product-green-stack.jpg' | asset_url | image_tag }}" />
         </a>
       </li>
       <li>
-        <a href="#">
-          <img src="app/images/content/product-nape.jpg" />
+        <a href="{{ collection.products[0].url %}}">
+          <img src="{{ 'product-nape.jpg' | asset_url | image_tag }}" />
         </a>
       </li>
       <li>
-        <a href="#">
-          <img src="app/images/content/product-long-black-stack.jpg" />
+        <a href="{{ collection.products[1].url %}}">
+          <img src="{{ 'product-long-black-stack.jpg' | asset_url | image_tag }}" />
         </a>
       </li>
       <li class="grid__double grid__end">
-        <a href="#">
-          <img src="app/images/content/product-long-white.jpg" />
+        <a href="{{ collection.products[1].url %}}">
+          <img src="{{ 'product-long-white.jpg' | asset_url | image_tag }}" />
         </a>
       </li>
       <li>
-        <a href="#">
-          <img src="app/images/content/product-white-stack.jpg" />
+        <a href="{{ collection.products[0].url %}}">
+          <img src="{{ 'product-white-stack.jpg' | asset_url | image_tag }}" />
         </a>
       </li>
       <li>
-        <a href="#">
-          <img src="app/images/content/product-print.jpg" />
+        <a href="{{ collection.products[1].url %}}">
+          <img src="{{ 'product-print.jpg' | asset_url | image_tag }}" />
         </a>
       </li>
     </ul>
   </div>
 </section>
 
-{{= it.include('footer') }}
+<div class="wrapper">
+  <footer class="footer">
+    <p class="footer__copy">&copy;J.Parré Apparel 2016</p>
+    <a href="#" class="button">Cart (0)</a>
+  </footer>
+</div>
