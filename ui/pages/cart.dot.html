@@ -3,64 +3,75 @@
   "template": "application"
 }
 
-<div class="wrapper">
-  <form action="/cart" method="post" class="cart">
-    
-    <table class="cart__table" cellspacing="0" cellpadding="0">
-      <thead>
-        <tr>
-          <th>&nbsp;</th>
-          <th class="cart__title">Price</th>
-          <th class="cart__title">Quantity</th>
-          <th class="cart__title">Total</th>
-          <th>&nbsp;</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="cart-item">
-          <td>
-            <a href="#" class="cart-item__title">T-Shirt</a>
-          </td>
-          <td>
-            <p class="cart-item__copy">&pound;20.00</p>
-          </td>
-          <td>
-            <input type="number" value="1" class="cart-item__quantity" />
-          </td>
-          <td>
-            <p class="cart-item__copy">&pound;20.00</p>
-          </td>
-          <td>
-            <a href="#" class="cart-item__copy">Remove</a>
-          </td>
-        </tr>
-        <tr class="cart-item">
-          <td>
-            <a href="#" class="cart-item__title">T-Shirt</a>
-          </td>
-          <td>
-            <p class="cart-item__copy">&pound;20.00</p>
-          </td>
-          <td>
-            <input type="number" value="1" class="cart-item__quantity" />
-          </td>
-          <td>
-            <p class="cart-item__copy">&pound;20.00</p>
-          </td>
-          <td>
-            <a href="#" class="cart-item__copy">Remove</a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  
-    <div class="cart__actions">
-      <p class="cart__total">Total: &pound;20.00</p>
 
-      <div>
-        <input type="submit" name="update" value="Update" class="button" />
-        <input type="submit" name="checkout" value="Check out" class="button" />    
+<section class="section">
+  <div class="wrapper">
+    <header class="banner">
+      <a href="/" class="banner__logo">
+        <img src="app/images/content/jparre-logo.svg" alt="J.Parré Apparel" />
+      </a>
+    </header>
+
+    <form action="/cart" method="post" class="cart">
+      
+      <table class="cart__table" cellspacing="0" cellpadding="0">
+        <thead>
+          <tr>
+            <th>&nbsp;</th>
+            <th class="cart__title cart__desktop">Price</th>
+            <th class="cart__title cart__desktop">Quantity</th>
+            <th class="cart__title">Total</th>
+            <th>&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="cart-item">
+            <td>
+              <a href="#" class="cart-item__title">T-Shirt</a>
+            </td>
+            <td class="cart__desktop">
+              <p class="cart-item__copy">&pound;20.00</p>
+            </td>
+            <td class="cart__desktop">
+              <input type="number" value="1" class="cart-item__quantity" />
+            </td>
+            <td>
+              <p class="cart-item__copy">&pound;20.00</p>
+            </td>
+            <td>
+              <a href="#" class="cart-item__copy">Remove</a>
+            </td>
+          </tr>
+          <tr class="cart-item">
+            <td>
+              <a href="#" class="cart-item__title">T-Shirt</a>
+            </td>
+            <td class="cart__desktop">
+              <p class="cart-item__copy">&pound;20.00</p>
+            </td>
+            <td class="cart__desktop">
+              <input type="number" value="1" class="cart-item__quantity" />
+            </td>
+            <td>
+              <p class="cart-item__copy">&pound;20.00</p>
+            </td>
+            <td>
+              <a href="#" class="cart-item__copy">Remove</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    
+      <div class="cart__actions">
+        <p class="cart__total">Total: &pound;20.00</p>
+
+        <div>
+          <input type="submit" name="update" value="Update" class="button" />
+          <input type="submit" name="checkout" value="Check out" class="button" />    
+        </div>
       </div>
-    </div>
-  </form>
-</div>
+    </form>
+  </div>
+</section>
+
+{{= it.include('footer') }}
