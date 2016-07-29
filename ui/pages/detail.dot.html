@@ -5,8 +5,8 @@
 <section class="section">
   <div class="wrapper">
     <header class="banner">
-      <a href="/" class="banner__logo">
-        <img src="app/images/content/jparre-logo.svg" alt="J.Parré Apparel" />
+      <a href="/collections/all" class="banner__logo">
+        <img src="{{ 'jparre-logo.svg' | asset_url | image_tag }}" alt="J.Parré Apparel" />
       </a>
     </header>
 
@@ -39,7 +39,7 @@
             {% endfor %}
             </select>
 
-            <button type="submit" name="add" id="add" class="button">{{ add_to_cart | escape }}</button>
+            <input type="submit" name="add" id="add" class="button" value="{{ add_to_cart | escape }}" />
           </form>
         </div>
       </div>
@@ -50,6 +50,31 @@
 <div class="wrapper">
   <footer class="footer">
     <p class="footer__copy">&copy;J.Parré Apparel 2016</p>
-    <a href="#" class="button">Cart (0)</a>
+    <a href="/cart" class="button">Cart ({{ cart.item_count }})</a>
   </footer>
 </div>
+
+<script>
+function selectCallback(variant, selector){
+  if(!variant){
+    return false;
+  }
+  
+  if(variant.available){
+    $('#add').removeClass('button--disabled').prop('disabled', false).val({{ add_to_cart | json }});    
+  } else {
+    $('#add').addClass('button--disabled').prop('disabled', true).val({{ sold_out | json }});
+  }
+  
+  $('#product-price').html(Shopify.formatMoney(variant.price, "{{ shop.money_format }}"));
+}
+
+$(function(){
+  new Shopify.OptionSelectors('product-select', { 
+      product: {{ product | json }}, 
+      onVariantSelected: selectCallback, 
+      enableHistoryState: true 
+    });
+});
+
+</script>

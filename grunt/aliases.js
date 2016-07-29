@@ -5,7 +5,7 @@ module.exports = function (grunt, options) {
         staticTasks = [];
 
     if(config.staticSite) {
-        staticTasks.push('zetzer', 'connect');
+        // staticTasks.push('zetzer', 'connect');
     }
 
     return {
