@@ -1,18 +1,11 @@
-{
-  "title": "Page Title",
-  "template": "application"
-}
-
 <section class="splash">
   <header class="splash__header">
     <a href="/" class="splash__logo">
-      <img src="app/images/content/jparre-logo.svg" alt="J.Parré Apparel" />
+      <img src="{{ 'jparre-logo.svg' | asset_url | image_tag }}" alt="J.Parré Apparel" />
     </a>
     <h1 class="splash__title">J.Parré</h1>
-    <p class="splash__copy">Indipendant Clothing Brand<br /> 
-    Based in London<br /> 
-    Est. 2016</p>
+    <p class="splash__copy">{{ pages['home'].content }}</p>
 
-    <a href="/shop.html" class="button">Shop Now</a>
+    <a href="/collections/all" class="button">Shop Now</a>
   </header>
 </section>

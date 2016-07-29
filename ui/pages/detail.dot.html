@@ -1,8 +1,6 @@
-{
-  "title": "Page Title",
-  "template": "application"
-}
-
+{% assign add_to_cart = 'Add to cart' %}
+{% assign sold_out = 'Sold Out' %}
+{% assign variant = product.selected_or_first_available_variant %}
 
 <section class="section">
   <div class="wrapper">
@@ -14,41 +12,34 @@
 
     <article class="grid grid--2-columns">
       <div>
-
         <ul class="grid grid--2-columns grid--late">
           <li class="grid__double">
-            <img src="app/images/content/product-green-stack.jpg" data-behaviour="big-product" />
+            <img src="{{ product.images[0] | product_img_url: 'grande' }}" data-behaviour="big-product" />
           </li>
 
           <li>
-            <img src="app/images/content/product-long-black-stack.jpg" data-behaviour="small-product" />
+            <img src="{{ product.images[1] | product_img_url: 'grande' }}" data-behaviour="small-product" />
           </li>
 
           <li>
-            <img src="app/images/content/product-long-white.jpg" data-behaviour="small-product" />
+            <img src="{{ product.images[2] | product_img_url: 'grande' }}" data-behaviour="small-product" />
           </li>
         </ul>
       </div>
 
       <div>
         <div class="detail">
-          <h1 class="detail__title">Pow hello you</h1>
-          <p class="detail__copy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea quo voluptatibus voluptates atque nostrum explicabo incidunt modi quidem vitae illo laborum perferendis.</p>
+          <h1 class="detail__title">{{ product.title }}</h1>
+          <p class="detail__copy">{{ product.description }}</p>
 
           <form class="detail__actions">
-            <select data-behaviour="select">
-              <option>white</option>
-              <option>Khaki</option>
-              <option>Navy</option>
+            <select id="product-select" name="id" data-behaviour="select">
+            {% for variant in product.variants %}
+              <option{% if variant == product.selected_or_first_available_variant %} selected{% endif %} value="{{ variant.id }}">{{ variant.title }}</option>
+            {% endfor %}
             </select>
 
-            <select data-behaviour="select">
-              <option>Small</option>
-              <option>Medium</option>
-              <option>Large</option>
-            </select>
-
-            <button type="submit" class="button">Add to Cart</button>
+            <button type="submit" name="add" id="add" class="button">{{ add_to_cart | escape }}</button>
           </form>
         </div>
       </div>
@@ -56,4 +47,9 @@
   </div>
 </section>
 
-{{= it.include('footer') }}
+<div class="wrapper">
+  <footer class="footer">
+    <p class="footer__copy">&copy;J.Parré Apparel 2016</p>
+    <a href="#" class="button">Cart (0)</a>
+  </footer>
+</div>
