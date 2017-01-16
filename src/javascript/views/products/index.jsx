@@ -1,4 +1,5 @@
 import React from 'react'
+import { IndexLink, Link } from 'react-router'
 
 // Stores
 import ProductsStore from '../../stores/products'
@@ -30,8 +31,6 @@ export default class ProductIndex extends React.Component {
     this.setState({
       products: ProductsStore.getProducts()
     })
-
-    console.log(this.state.products)
   }
 
   render() {
@@ -39,7 +38,7 @@ export default class ProductIndex extends React.Component {
       <div>
         { this.state.products.map((product, index) => {
           return (
-            <div key={ index }>{ product.title }</div>
+            <Link key={ index } to={ 'products/' + product.handle }>{ product.title }</Link>
           )
         }) }
       </div>

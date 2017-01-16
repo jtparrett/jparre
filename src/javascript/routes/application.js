@@ -26,7 +26,7 @@ ReactDOM.render(
     <Route path="/" component={ Layout }>
       <IndexRoute name="Home" component={ HomeIndex }></IndexRoute>
       <Route path="products" component={ ProductIndex }></Route>
-      <Route path="products/:id" component={ ProductShow }></Route>
+      <Route path="products/:handle" component={ ProductShow }></Route>
       <Route path="*" component={ NotFoundView }></Route>
     </Route>
   </Router>,
