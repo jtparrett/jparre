@@ -44,7 +44,7 @@ module.exports = {
     ]
   },
   output: {
-    path: __dirname + "/dist",
+    path: __dirname + "/app",
     filename: "assets/[name].production.js",
     publicPath: '/',
     contentBase: '/'
