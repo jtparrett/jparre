@@ -39,10 +39,9 @@ export default class ProductShow extends React.Component {
 
   render() {
     if(this.state.product){
-      let product = this.state.product
+      let { product } = this.state
       return (
         <div>
-          <img src={ product.image.src } />
           { product.title }
           { product.body_html }
           { product.variants[0].price }
