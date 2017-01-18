@@ -17,11 +17,11 @@ export default class HomeIndex extends React.Component {
     this.state = {
       current: 0,
       content: [() => {
-        return (<CarouselImage src={ [Banner1, Banner2, Banner3] } />)
+        return (<CarouselImage src={ [Banner4, Banner5] } />)
       }, () => {
         return (<CarouselVideo src="https://www.facebook.com/JParreApparel/videos/593954704148136" />)
       }, () => {
-        return (<CarouselImage src={ [Banner4, Banner5] } />)
+        return (<CarouselImage src={ [Banner1, Banner2, Banner3] } />)
       }, () => {
         return (<CarouselVideo src="https://www.facebook.com/JParreApparel/videos/593000240910249/" />)
       }, () => {
