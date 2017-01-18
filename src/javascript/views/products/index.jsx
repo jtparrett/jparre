@@ -1,11 +1,10 @@
 import React from 'react'
-import { IndexLink, Link } from 'react-router'
 
-// Stores
 import ProductsStore from '../../stores/products'
 
-// Actions
 import * as ProductsActions from '../../actions/products'
+
+import Listing from '../../components/listing'
 
 export default class ProductIndex extends React.Component {
   constructor(props){
@@ -35,12 +34,16 @@ export default class ProductIndex extends React.Component {
 
   render() {
     return (
-      <div>
-        { this.state.products.map((product, index) => {
-          return (
-            <Link key={ index } to={ 'products/' + product.handle }>{ product.title }</Link>
-          )
-        }) }
+      <div className="wrapper">
+        <ul className="list">
+          { this.state.products.map((product, index) => {
+            return (
+              <li className="list__item" key={ index }>
+                <Listing product={ product } />
+              </li>
+            )
+          }) }
+        </ul>
       </div>
     )
   }

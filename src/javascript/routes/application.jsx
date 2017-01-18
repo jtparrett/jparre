@@ -8,6 +8,9 @@ import '../../index'
 // Layout
 import Layout from '../views/layouts/application'
 
+// Stylesheets
+import 'stylesheets/imports'
+
 // Views
 import NotFoundView from '../views/404'
 import HomeIndex from '../views/home/index'

@@ -72,7 +72,7 @@ module.exports = {
     }
   },
   resolve: {
-    extensions: ['', '.jsx', '.html', '.js', '.sass', '.jpg', '.png', '.gif', '.svg'],
+    extensions: ['', '.jsx', '.html', '.js', '.sass', '.jpg', '.png', '.gif', '.svg', '.mp4'],
     root: [path.join(__dirname, './src')],
     alias: {
       config: path.join(__dirname, './src/javascript/config', process.env.NODE_ENV)

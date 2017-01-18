@@ -1,13 +1,9 @@
 import React from 'react'
-import { IndexLink, Link } from 'react-router'
 
-// Stores
 import ProductsStore from '../../stores/products'
 
-// Actions
 import * as ProductsActions from '../../actions/products'
 
-// Components
 import NotFoundView from '../404'
 
 export default class ProductShow extends React.Component {
@@ -43,7 +39,7 @@ export default class ProductShow extends React.Component {
       return (
         <div>
           { product.title }
-          { product.body_html }
+          <div dangerouslySetInnerHTML={{ __html: product.body_html }}></div>
           { product.variants[0].price }
           <select>
             { product.variants.map((varient, index) => {
