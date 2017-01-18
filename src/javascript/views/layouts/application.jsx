@@ -5,11 +5,9 @@ import Header from '../../components/header';
 export default class Layout extends React.Component {
   render() {
     return (
-      <div>
+      <div className="page">
         <Header />
-        <main>
-          { this.props.children }
-        </main>
+        { this.props.children }
       </div>
     );
   }

@@ -5,7 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "NODE_ENV=development webpack-dev-server --content-base app --inline --hot",
+    "start": "NODE_ENV=development webpack-dev-server --content-base app --inline --hot --host 0.0.0.0",
     "build": "NODE_ENV=production webpack"
   },
   "author": "",
@@ -32,7 +32,7 @@
     "node-bourbon": "^4.2.8",
     "node-sass": "^3.10.1",
     "postcss-loader": "^1.0.0",
-    "react": "^0.14.6",
+    "react": "^0.14.8",
     "react-click-outside": "^2.2.0",
     "react-dom": "^0.14.6",
     "react-router": "^2.8.1",

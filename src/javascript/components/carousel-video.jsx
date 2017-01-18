@@ -7,7 +7,7 @@ export default class CarouselVideo extends React.Component {
     return (
       <div className="carousel">
         <div className="video">
-          <iframe src={ this.props.src }></iframe>
+          <iframe src={ `https://www.facebook.com/plugins/video.php?href=${this.props.src}` }></iframe>
         </div>
       </div>
     )
