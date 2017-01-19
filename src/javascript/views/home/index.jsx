@@ -1,5 +1,5 @@
 import React from 'react'
-import { IndexLink, Link } from 'react-router'
+import { Link } from 'react-router'
 
 import { CarouselData } from '../../data/carousel'
 
@@ -38,6 +38,6 @@ export default class HomeIndex extends React.Component {
           <Link to="/products" className="actions__link">Shop Now &rarr;</Link>
         </section>
       </div>
-    );
+    )
   }
 }

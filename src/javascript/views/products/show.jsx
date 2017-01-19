@@ -1,15 +1,13 @@
 import React from 'react'
-import { IndexLink, Link } from 'react-router'
+import { browserHistory, Link } from 'react-router'
 
 import ProductsStore from '../../stores/products'
-import CartStore from '../../stores/cart'
 
 import * as ProductsActions from '../../actions/products'
-import * as CartActions from '../../actions/cart'
 
 import NotFoundView from '../404'
 import Product from '../../components/product'
-import CustomSelect from '../../components/custom-select'
+import PurchaseForm from '../../components/purchase-form'
 import Footer from '../../components/footer'
 
 export default class ProductShow extends React.Component {
@@ -17,7 +15,6 @@ export default class ProductShow extends React.Component {
     super(props)
     this.state = {
       handle: props.params.handle,
-      varient: false,
       product: false
     }
   }
@@ -40,17 +37,6 @@ export default class ProductShow extends React.Component {
     })
   }
 
-  updateVarient = (e) => {
-    this.setState({
-      vaient: this.state.product.variants[e.target.value]
-    })
-  }
-
-  addToCart = (e) => {
-    e.preventDefault()
-    CartActions.addToCart(this.state.varient)
-  }
-
   render() {
     if(!this.state.product){
       return (<NotFoundView />)
@@ -65,15 +51,7 @@ export default class ProductShow extends React.Component {
             <h1 className="detail__title">{ product.title }</h1>
             <div dangerouslySetInnerHTML={{ __html: product.attrs.body_html }} className="wysiwyg"></div>
             <p className="detail__price">&pound;{ product.variants[0].price }</p>
-
-            <form onSubmit={ this.addToCart } className="detail__actions">
-              <CustomSelect onChange={ this.updateVarient }>
-                { product.variants.map((varient, index) => {
-                  return (<option key={ index } value={ index }>{ varient.title }</option>)
-                }) }
-              </CustomSelect>
-              <button className="button">Add to Cart</button>
-            </form>
+            <PurchaseForm product={ product } />
           </article>
         </section>
 

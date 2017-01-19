@@ -8,7 +8,7 @@ export default class NotFound extends React.Component {
     return (
       <div>
         <section className="section">
-          <h1 className="section__title">404 Page Not Found. Soz</h1>
+          <h1 className="section__title">Page Not Found. Soz</h1>
         </section>
         <section class="actions">
           <Link to="/" className="actions__link">&larr; Back Home</Link>
