@@ -4,7 +4,8 @@ import ProductsStore from '../../stores/products'
 
 import * as ProductsActions from '../../actions/products'
 
-import Listing from '../../components/listing'
+import Product from '../../components/product'
+import Footer from '../../components/footer'
 
 export default class ProductIndex extends React.Component {
   constructor(props){
@@ -39,11 +40,12 @@ export default class ProductIndex extends React.Component {
           { this.state.products.map((product, index) => {
             return (
               <li className="list__item" key={ index }>
-                <Listing product={ product } />
+                <Product product={ product } />
               </li>
             )
           }) }
         </ul>
+        <Footer />
       </div>
     )
   }

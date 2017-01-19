@@ -1,0 +1,49 @@
+@import '../settings/*'
+@import '../mixins/*'
+
+.custom-select
+  position: relative
+  z-index: 1
+  display: flex
+  align-items: center
+  border: 1px solid #000
+
+  &:after
+    content: ""
+    position: relative
+    z-index: -1
+    display: block
+    border-color: #000
+    border-style: solid
+    border-width: 0 2px 2px 0
+    margin: -3px 10px 0px 5px
+    transform: rotate(45deg)
+    width: 5px
+    height: 5px
+
+  select
+    +ext(copy)
+    flex: 1
+    position: relative
+    z-index: 1
+    border: 0
+    background: transparent
+    margin-right: -22px
+    padding: 5px 22px 5px 5px
+    appearance: none
+    outline: none
+
+@-moz-document url-prefix() 
+  .custom-select
+    overflow: hidden
+  .custom-select select
+    width: 120%
+    width: -moz-calc(100% + 3em)
+    width: calc(100% + em)
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)
+  .custom-select select::-ms-expand
+    display: none
+  .custom-select select:focus::-ms-value
+    background: transparent
+    color: #222

@@ -34,8 +34,8 @@ export default class HomeIndex extends React.Component {
         <div className="page__inner">
           { this.carousel() }
         </div>
-        <section className="intro">
-          <Link to="products" className="intro__link">Shop Now &rarr;</Link>
+        <section className="actions">
+          <Link to="/products" className="actions__link">Shop Now &rarr;</Link>
         </section>
       </div>
     );

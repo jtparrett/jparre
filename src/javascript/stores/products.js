@@ -5,8 +5,8 @@ import dispatcher from '../dispatcher'
 class ProductsStore extends EventEmitter {
   constructor(props) {
     super(props)
-    this.products = []
-    this.product = {}
+    this.products = false
+    this.product = false
   }
 
   getProducts() {
