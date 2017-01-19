@@ -7,7 +7,7 @@ export default class Product extends React.Component {
   render(){
     let { product } = this.props
     return (
-      <Link to={ `/products/${product.handle}` } className="product">
+      <Link to={ `/products/${product.attrs.handle}` } className="product">
         <img src={ product.images[0].src } className="product__image" />
       </Link>
     )

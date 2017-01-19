@@ -19,6 +19,6 @@ export function getProduct(handle){
 export function receivedProduct(response){
   dispatcher.dispatch({ 
     type: 'RECEIVED_PRODUCT', 
-    product: response
+    products: response
   }) 
 }

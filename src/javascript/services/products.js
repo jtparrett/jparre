@@ -1,15 +1,15 @@
 import dispatcher from '../dispatcher'
-import axios from 'axios'
+import * as ShopifyBuy from './shopify-client'
 import * as Actions from '../actions/products'
 
 export function getProducts() {
-  axios.get('http://j.parre.co/collections/all/products.json').then((response) => {
-    Actions.receivedProducts(response.data.products)
+  ShopifyBuy.Client.fetchAllProducts().then((response) => {
+    Actions.receivedProducts(response)
   })
 }
 
 export function getProduct(handle) {
-  axios.get(`http://j.parre.co/products/${handle}.json`).then((response) => {
-    Actions.receivedProduct(response.data.product)
+  ShopifyBuy.Client.fetchQueryProducts({ handle: handle }).then((response) => {
+    Actions.receivedProduct(response)
   })
 }

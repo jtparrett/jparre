@@ -25,7 +25,7 @@ class ProductsStore extends EventEmitter {
         break
       }
       case 'RECEIVED_PRODUCT': {
-        this.product = action.product
+        this.product = action.products[0]
         this.emit('change')
         break
       }

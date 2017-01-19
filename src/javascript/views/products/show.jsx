@@ -2,8 +2,10 @@ import React from 'react'
 import { IndexLink, Link } from 'react-router'
 
 import ProductsStore from '../../stores/products'
+import CartStore from '../../stores/cart'
 
 import * as ProductsActions from '../../actions/products'
+import * as CartActions from '../../actions/cart'
 
 import NotFoundView from '../404'
 import Product from '../../components/product'
@@ -15,6 +17,7 @@ export default class ProductShow extends React.Component {
     super(props)
     this.state = {
       handle: props.params.handle,
+      varient: false,
       product: false
     }
   }
@@ -37,6 +40,17 @@ export default class ProductShow extends React.Component {
     })
   }
 
+  updateVarient = (e) => {
+    this.setState({
+      vaient: this.state.product.variants[e.target.value]
+    })
+  }
+
+  addToCart = (e) => {
+    e.preventDefault()
+    CartActions.addToCart(this.state.varient)
+  }
+
   render() {
     if(!this.state.product){
       return (<NotFoundView />)
@@ -49,17 +63,17 @@ export default class ProductShow extends React.Component {
           <Product product={ product } />
           <article className="detail">
             <h1 className="detail__title">{ product.title }</h1>
-            <div dangerouslySetInnerHTML={{ __html: product.body_html }} className="wysiwyg"></div>
+            <div dangerouslySetInnerHTML={{ __html: product.attrs.body_html }} className="wysiwyg"></div>
             <p className="detail__price">&pound;{ product.variants[0].price }</p>
 
-            <div className="detail__actions">
-              <CustomSelect>
+            <form onSubmit={ this.addToCart } className="detail__actions">
+              <CustomSelect onChange={ this.updateVarient }>
                 { product.variants.map((varient, index) => {
-                  return (<option key={ index }>{ varient.title }</option>)
+                  return (<option key={ index } value={ index }>{ varient.title }</option>)
                 }) }
               </CustomSelect>
               <button className="button">Add to Cart</button>
-            </div>
+            </form>
           </article>
         </section>
 
