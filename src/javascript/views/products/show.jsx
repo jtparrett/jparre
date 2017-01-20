@@ -46,7 +46,7 @@ export default class ProductShow extends React.Component {
     return (
       <div>
         <section className="wrapper wrapper--slim">
-          <Product product={ product } />
+          <Product product={ product } imageSize={7} />
           <article className="detail">
             <h1 className="detail__title">{ product.title }</h1>
             <div dangerouslySetInnerHTML={{ __html: product.attrs.body_html }} className="wysiwyg"></div>

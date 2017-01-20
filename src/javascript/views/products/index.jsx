@@ -40,7 +40,7 @@ export default class ProductIndex extends React.Component {
           { this.state.products.map((product, index) => {
             return (
               <li className="list__item" key={ index }>
-                <Product product={ product } />
+                <Product product={ product } imageSize={6} />
               </li>
             )
           }) }
