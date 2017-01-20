@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import fetch from 'fetch-ie8'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 
 // HTML
