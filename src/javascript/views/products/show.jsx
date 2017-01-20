@@ -7,8 +7,8 @@ import * as ProductsActions from '../../actions/products'
 
 import NotFoundView from '../404'
 import Product from '../../components/product'
-import PurchaseForm from '../../components/purchase-form'
 import Footer from '../../components/footer'
+import PurchaseForm from './form'
 
 export default class ProductShow extends React.Component {
   constructor(props){

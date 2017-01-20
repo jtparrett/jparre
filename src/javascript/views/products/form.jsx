@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-import CustomSelect from './custom-select'
+import CustomSelect from '../../components/custom-select'
 
 export default class PurchaseForm extends React.Component {
   constructor(props){
@@ -20,11 +20,6 @@ export default class PurchaseForm extends React.Component {
     })
   }
 
-  onSubmit = (e) => {
-    e.preventDefault()
-    window.location = this.state.variants[this.state.variant].checkoutUrl(1)
-  }
-
   render() {
     let { product } = this.props
 
@@ -35,13 +30,13 @@ export default class PurchaseForm extends React.Component {
     }
 
     return (
-      <form onSubmit={ this.onSubmit } className="detail__actions">
+      <form action={ this.state.variants[this.state.variant].checkoutUrl(1) } method="post" className="detail__actions">
         <CustomSelect onChange={ this.updateVariant }>
           { this.state.variants.map((varient, index) => {
             return (<option key={ index } value={ index }>{ varient.title }</option>)
           })}
         </CustomSelect>
-        <button className="button">Purchase</button>
+        <button type="submit" className="button">Purchase</button>
       </form>
     )
   }
