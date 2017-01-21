@@ -8,6 +8,8 @@ import 'images/IMG_2631.JPG'
 import 'images/IMG_1804.JPG'
 import 'images/IMG_3023.JPG'
 import 'images/IMG_6815.JPG'
+import 'images/IMG_1755.JPG'
+import 'images/IMG_8175.JPG'
 
 export function CarouselData() {
   return [() => {
@@ -18,6 +20,8 @@ export function CarouselData() {
     return (<CarouselImage src={ ['/assets/images/IMG_1804.JPG', '/assets/images/IMG_3023.JPG', '/assets/images/IMG_6815.JPG'] } />)
   }, () => {
     return (<CarouselVideo src="https://www.facebook.com/JParreApparel/videos/593000240910249" />)
+  }, () => {
+    return (<CarouselImage src={ ['/assets/images/IMG_8175.JPG', '/assets/images/IMG_1755.JPG'] } />)
   }, () => {
     return (<CarouselVideo src="https://www.facebook.com/JParreApparel/videos/566298463580427" />)
   }]
