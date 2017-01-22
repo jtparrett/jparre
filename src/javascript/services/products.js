@@ -10,6 +10,6 @@ export function getProducts() {
 
 export function getProduct(handle) {
   ShopifyBuy.Client.fetchQueryProducts({ handle: handle }).then((response) => {
-    Actions.receivedProduct(response)
+    Actions.receivedProducts(response)
   })
 }

@@ -6,6 +6,7 @@ import ProductsStore from '../../stores/products'
 import * as ProductsActions from '../../actions/products'
 
 import NotFoundView from '../404'
+import Loading from '../../components/loading'
 import Product from '../../components/product'
 import Footer from '../../components/footer'
 import Modal from '../../components/modal'
@@ -16,7 +17,7 @@ export default class ProductShow extends React.Component {
     super(props)
     this.state = {
       handle: props.params.handle,
-      product: false,
+      products: false,
       modal: false,
       currentModal: 0
     }
@@ -36,7 +37,7 @@ export default class ProductShow extends React.Component {
 
   getResource = () => {
     this.setState({
-      product: ProductsStore.getProduct()
+      products: ProductsStore.getProducts()
     })
   }
 
@@ -56,22 +57,26 @@ export default class ProductShow extends React.Component {
 
   next = () => {
     this.setState({
-      currentModal: ++this.state.currentModal % this.state.product.images.length
+      currentModal: ++this.state.currentModal % this.state.products[0].images.length
     })
   }
 
   render() {
-    if(!this.state.product){
+    if(!this.state.products){
+      return (<Loading />)
+    }
+
+    if(this.state.products.length <= 0){
       return (<NotFoundView />)
     }
 
-    let { product } = this.state
+    let { products } = this.state
 
     if(this.state.modal){
       return (
         <Modal closeEvent={ this.closeModal }>
           <section className="modal" onClick={ this.next }>
-            <img src={ product.images[this.state.currentModal].src } className="modal__image" />
+            <img src={ products[0].images[this.state.currentModal].src } className="modal__image" />
           </section>
         </Modal>
       )
@@ -80,12 +85,12 @@ export default class ProductShow extends React.Component {
     return (
       <div>
         <section className="wrapper wrapper--slim">
-          <Product product={ product } imageSize={7} onClick={ this.openModal }/>
+          <Product product={ products[0] } imageSize={7} onClick={ this.openModal }/>
           <article className="detail">
-            <h1 className="detail__title">{ product.title }</h1>
-            <div dangerouslySetInnerHTML={{ __html: product.attrs.body_html }} className="wysiwyg"></div>
-            <p className="detail__price">&pound;{ product.variants[0].price }</p>
-            <PurchaseForm product={ product } />
+            <h1 className="detail__title">{ products[0].title }</h1>
+            <div dangerouslySetInnerHTML={{ __html: products[0].attrs.body_html }} className="wysiwyg"></div>
+            <p className="detail__price">&pound;{ products[0].variants[0].price }</p>
+            <PurchaseForm product={ products[0] } />
           </article>
         </section>
 

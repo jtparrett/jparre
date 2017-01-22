@@ -6,26 +6,16 @@ class ProductsStore extends EventEmitter {
   constructor(props) {
     super(props)
     this.products = false
-    this.product = false
   }
 
   getProducts() {
     return this.products
   }
 
-  getProduct() {
-    return this.product
-  }
-
   handleActions(action) {
     switch(action.type) {
       case 'RECEIVED_PRODUCTS': {
         this.products = action.products
-        this.emit('change')
-        break
-      }
-      case 'RECEIVED_PRODUCT': {
-        this.product = action.products[0]
         this.emit('change')
         break
       }
