@@ -3,7 +3,7 @@ import * as ShopifyBuy from './shopify-client'
 import * as Actions from '../actions/products'
 
 export function getProducts() {
-  ShopifyBuy.Client.fetchAllProducts().then((response) => {
+  ShopifyBuy.Client.fetchQueryProducts({ collection_id: 378706951, sort_by: 'collection-default' }).then((response) => {
     Actions.receivedProducts(response)
   })
 }
