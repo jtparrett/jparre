@@ -30,7 +30,7 @@ export default class HomeIndex extends React.Component {
 
   render() {
     return (
-      <div className="page__main" onClick={ this.next }>
+      <div className="page__main page__main--actioned" onClick={ this.next }>
         <div className="page__inner">
           { this.carousel() }
         </div>
