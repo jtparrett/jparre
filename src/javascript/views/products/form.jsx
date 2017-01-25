@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router'
 
 import CustomSelect from '../../components/custom-select'
 
@@ -21,9 +20,7 @@ export default class PurchaseForm extends React.Component {
   }
 
   render() {
-    let { product } = this.props
-
-    if(!product.attrs.available){
+    if(!this.props.product.attrs.available){
       return (
         <p className="detail__sold-out">Sold Out</p>
       )

@@ -1,6 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router'
 
+import ProductsStore from '../../stores/products'
+
+import * as ProductsActions from '../../actions/products'
+
 import { CarouselData } from '../../data/carousel'
 
 export default class HomeIndex extends React.Component {
@@ -24,15 +28,11 @@ export default class HomeIndex extends React.Component {
     })
   }
 
-  carousel(){
-    return this.state.content[this.state.current]()
-  }
-
   render() {
     return (
       <div className="page__main page__main--actioned" onClick={ this.next }>
         <div className="page__inner">
-          { this.carousel() }
+          { this.state.content[this.state.current]() }
         </div>
         <section className="actions">
           <Link to="/products" className="actions__link">Shop Now &rarr;</Link>
