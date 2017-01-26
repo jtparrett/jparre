@@ -36,35 +36,28 @@ export default class ProductIndex extends React.Component {
   getDatabase = () => {
     this.state.database.allDocs({include_docs: true}).then((docs) => {
       this.setState({
-        products: docs.rows.map((doc) => {
-          return doc.doc
+        products: docs.rows.map((row) => {
+          return row.doc
         })
       })
     })
   }
 
   getProducts = () => {
-    ProductsStore.getProducts().map((product) => {
-      this.loadProduct(product)
-    })
-  }
-
-  loadProduct(product) {
-    let xhr = new XMLHttpRequest()
-    xhr.responseType = 'blob'
-    xhr.onload = () => {
-      let reader = new FileReader()
-      reader.onloadend = () => {
-        this.state.database.put({
-          _id: product.id.toString(),
-          image: reader.result,
-          ...product.attrs
+    this.state.database.bulkDocs(ProductsStore.getProducts().map((product) => {
+      return {
+        _id: product.id.toString(),
+        ...product.attrs,
+        variants: product.variants.map((variant) => {
+          return {
+            title: variant.title,
+            available: variant.available,
+            price: variant.price,
+            checkoutURL: variant.checkoutUrl(1)
+          }
         })
       }
-      reader.readAsDataURL(xhr.response)
-    }
-    xhr.open('GET', product.attrs.images[0].src)
-    xhr.send()
+    })).then(this.getDatabase)
   }
 
   render() {
