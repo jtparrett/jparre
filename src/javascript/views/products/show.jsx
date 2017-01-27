@@ -1,10 +1,6 @@
 import React from 'react'
-import PouchDB from 'pouchdb'
-import { browserHistory, Link } from 'react-router'
-
-import ProductsStore from '../../stores/products'
-
-import * as ProductsActions from '../../actions/products'
+import PageHelper from '../helper'
+import { Link } from 'react-router'
 
 import NotFoundView from '../404'
 import Loading from '../../components/loading'
@@ -13,60 +9,18 @@ import Footer from '../../components/footer'
 import Modal from '../../components/modal'
 import PurchaseForm from './form'
 
-export default class ProductShow extends React.Component {
+export default class ProductShow extends PageHelper {
   constructor(props){
     super(props)
     this.state = {
-      database: new PouchDB('jparre'),
-      handle: props.params.handle,
-      products: false,
       modal: false,
-      currentModal: 0
+      currentModal: 0,
+      products: false
     }
   }
 
-  componentWillMount() {
-    this.state.database.changes({live: true, since: 'now'}).on('change', this.getDatabase)
-    ProductsStore.on('change', this.getProducts)
-  }
-
-  componentWillUnmount() {
-    this.state.database.changes().removeListener('change', this.getDatabase)
-    ProductsStore.removeListener('change', this.getProducts) 
-  }
-
   componentDidMount() {
-    this.getDatabase()
-    ProductsActions.getProduct(this.state.handle)
-  }
-
-  getDatabase = () => {
-    this.state.database.allDocs({include_docs: true}).then((docs) => {
-      this.setState({
-        products: docs.rows.filter((row) => {
-          return row.doc.handle === this.state.handle
-        }).map((row) => {
-          return row.doc
-        })
-      })
-    })
-  }
-
-  getProducts = () => {
-    this.state.database.bulkDocs(ProductsStore.getProducts().map((product) => {
-      return {
-        _id: product.id.toString(),
-        ...product.attrs,
-        variants: product.variants.map((variant) => {
-          return {
-            title: variant.title,
-            available: variant.available,
-            price: variant.price,
-            checkoutURL: variant.checkoutUrl(1)
-          }
-        })
-      }
-    })).then(this.getDatabase)
+    this.loadProducts()
   }
 
   openModal = () => {
