@@ -20,14 +20,14 @@ export default class PurchaseForm extends React.Component {
   }
 
   render() {
-    if(!this.props.product.attrs.available){
+    if(!this.props.product.available){
       return (
         <p className="detail__sold-out">Sold Out</p>
       )
     }
 
     return (
-      <form action={ this.state.variants[this.state.variant].checkoutUrl(1) } method="post" className="detail__actions">
+      <form action={ this.state.variants[this.state.variant].checkoutURL } method="post" className="detail__actions">
         <CustomSelect onChange={ this.updateVariant }>
           { this.state.variants.map((varient, index) => {
             return (<option key={ index } value={ index }>{ varient.title }</option>)
