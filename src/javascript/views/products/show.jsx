@@ -1,9 +1,6 @@
 import React from 'react'
-import { browserHistory, Link } from 'react-router'
-
-import ProductsStore from '../../stores/products'
-
-import * as ProductsActions from '../../actions/products'
+import PageHelper from '../helper'
+import { Link } from 'react-router'
 
 import NotFoundView from '../404'
 import Loading from '../../components/loading'
@@ -12,33 +9,18 @@ import Footer from '../../components/footer'
 import Modal from '../../components/modal'
 import PurchaseForm from './form'
 
-export default class ProductShow extends React.Component {
+export default class ProductShow extends PageHelper {
   constructor(props){
     super(props)
     this.state = {
-      handle: props.params.handle,
-      products: false,
       modal: false,
-      currentModal: 0
+      currentModal: 0,
+      products: false
     }
   }
 
-  componentWillMount() {
-    ProductsStore.on('change', this.getResource)
-  }
-
-  componentWillUnmount() {
-    ProductsStore.removeListener('change', this.getResource) 
-  }
-
   componentDidMount() {
-    ProductsActions.getProduct(this.state.handle)
-  }
-
-  getResource = () => {
-    this.setState({
-      products: ProductsStore.getProducts()
-    })
+    this.loadProducts()
   }
 
   openModal = () => {
@@ -85,10 +67,10 @@ export default class ProductShow extends React.Component {
     return (
       <div>
         <section className="wrapper wrapper--slim">
-          <Product product={ products[0] } imageSize={7} onClick={ this.openModal }/>
+          <Product product={ products[0] } onClick={ this.openModal }/>
           <article className="detail">
             <h1 className="detail__title">{ products[0].title }</h1>
-            <div dangerouslySetInnerHTML={{ __html: products[0].attrs.body_html }} className="wysiwyg"></div>
+            <div dangerouslySetInnerHTML={{ __html: products[0].body_html }} className="wysiwyg"></div>
             <p className="detail__price">&pound;{ products[0].variants[0].price }</p>
             <PurchaseForm product={ products[0] } />
           </article>
