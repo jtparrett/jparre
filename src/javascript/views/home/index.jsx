@@ -28,13 +28,31 @@ export default class HomeIndex extends React.Component {
     })
   }
 
+  change = (index) => {
+    this.setState({
+      current: index
+    })
+  }
+
   render() {
     return (
-      <div className="page__main" onClick={ this.next }>
-        <div className="page__inner">
+      <div className="page__main">
+        <div className="page__inner" onClick={ this.next }>
           { this.state.content[this.state.current]() }
         </div>
+
         <section className="actions">
+          <ul className="nav">
+            { this.state.content.map((item, index) => {
+              let classes = ['nav__button', index === this.state.current && 'active'].join(' nav__button--')
+              return (
+                <li className="nav__item" key={ index }>
+                  <button className={ classes } onClick={ () => { this.change(index) } }>{ index }</button>
+                </li>
+              )
+            }) }
+          </ul>
+
           <Link to="/products" className="actions__link">Shop Now &rarr;</Link>
         </section>
       </div>

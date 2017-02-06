@@ -10,6 +10,7 @@ import 'images/banner-4.jpg'
 import 'images/banner-5.jpg'
 import 'images/banner-6.jpg'
 import 'images/banner-7.jpg'
+import 'images/banner-8.jpg'
 
 export function CarouselData() {
   return [() => {
@@ -24,5 +25,7 @@ export function CarouselData() {
     return (<CarouselImage src={ ['/assets/images/banner-6.jpg', '/assets/images/banner-7.jpg'] } />)
   }, () => {
     return (<CarouselVideo src="https://www.facebook.com/JParreApparel/videos/566298463580427" />)
+  }, () => {
+    return (<CarouselImage src={ ['/assets/images/banner-8.jpg'] } />)
   }]
 }
