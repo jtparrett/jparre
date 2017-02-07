@@ -9,7 +9,6 @@ import NotFoundView from '../404'
 import Loading from '../../components/loading'
 import Product from '../../components/product'
 import Footer from '../../components/footer'
-import Modal from '../../components/modal'
 import PurchaseForm from './form'
 
 export default class ProductShow extends React.Component {
@@ -61,6 +60,12 @@ export default class ProductShow extends React.Component {
     })
   }
 
+  change = (index) => {
+    this.setState({
+      currentModal: index
+    }) 
+  }
+
   render() {
     if(!this.state.products){
       return (<Loading />)
@@ -74,11 +79,25 @@ export default class ProductShow extends React.Component {
 
     if(this.state.modal){
       return (
-        <Modal closeEvent={ this.closeModal }>
+        <div className="page__main">
           <section className="modal" onClick={ this.next }>
             <img src={ products[0].images[this.state.currentModal].src } className="modal__image" />
           </section>
-        </Modal>
+
+          <section className="actions">
+            <ul className="nav">
+              { products[0].images.map((item, index) => {
+                let classes = ['nav__button', index === this.state.currentModal && 'active'].join(' nav__button--')
+                return (
+                  <li className="nav__item" key={ index }>
+                    <button className={ classes } onClick={ () => { this.change(index) } }>{ index }</button>
+                  </li>
+                )
+              }) }
+            </ul>
+            <button className="button" onClick={ this.closeModal }>Close</button>
+          </section>
+        </div>
       )
     }
 
