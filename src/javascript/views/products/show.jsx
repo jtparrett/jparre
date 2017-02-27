@@ -8,7 +8,7 @@ import * as ProductsActions from '../../actions/products'
 import NotFoundView from '../404'
 import Loading from '../../components/loading'
 import Product from '../../components/product'
-import Footer from '../../components/footer'
+import Brand from '../../components/brand'
 import PurchaseForm from './form'
 
 export default class ProductShow extends React.Component {
@@ -116,7 +116,7 @@ export default class ProductShow extends React.Component {
         <section className="actions">
           <Link to="/products" className="actions__link">&larr; Back to Products</Link>
         </section>
-        <Footer />
+        <Brand />
       </div>
     )
   }
