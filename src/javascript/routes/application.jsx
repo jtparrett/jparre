@@ -17,6 +17,7 @@ import NotFoundView from '../views/404'
 import HomeIndex from '../views/home/index'
 import ProductIndex from '../views/products/index'
 import ProductShow from '../views/products/show'
+import StockistsIndex from '../views/stockists/index'
 
 // App container
 const app = document.getElementById('app')
@@ -28,6 +29,7 @@ ReactDOM.render(
     <IndexRoute component={ HomeIndex }></IndexRoute>
     <Route path="products" component={ ProductIndex }></Route>
     <Route path="products/:handle" component={ ProductShow }></Route>
+    <Route path="stockists" component={ StockistsIndex }></Route>
     <Route path="*" component={ NotFoundView }></Route>
   </Route>
 </Router>, app)
