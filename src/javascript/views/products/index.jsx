@@ -6,7 +6,7 @@ import * as ProductsActions from '../../actions/products'
 
 import Loading from '../../components/loading'
 import Product from '../../components/product'
-import Brand from '../../components/brand'
+import Footer from '../../components/footer'
 
 export default class ProductIndex extends React.Component {
   constructor(props){
@@ -50,7 +50,7 @@ export default class ProductIndex extends React.Component {
             )
           }) }
         </ul>
-        <Brand />
+        <Footer />
       </div>
     )
   }

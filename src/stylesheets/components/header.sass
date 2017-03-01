@@ -1,13 +1,30 @@
-.header
-  padding: 100px 0px 60px
-  text-align: center
+@import '../settings/*'
+@import '../mixins/*'
 
-  &__logo
+.header
+  padding: 0 10px
+  background: #fafafa
+
+  &__list
+    list-style: none
+    margin: 0
+    padding: 0
+
+  &__item
     display: inline-block
 
-    img
-      width: 140px
-      display: block
+    &:not(:last-child):after
+      border-radius: 50%
+      content: ''
+      margin: 0 10px
+      display: inline-block
+      vertical-align: middle
+      height: 3px
+      width: 3px
+      background: #000
 
-  @media all and (max-width: 767px)
-    padding: 50px 0px 30px
+  &__link
+    +ext(copy)
+    font-size: 10px
+    text-transform: uppercase
+    text-decoration: none

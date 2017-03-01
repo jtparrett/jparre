@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Brand from '../../components/brand'
+import Footer from '../../components/footer'
 
 import 'images/headcase.jpg'
 
@@ -21,7 +21,7 @@ export default class StockistsIndex extends React.Component {
             </header>
           </article>
         </section>
-        <Brand />
+        <Footer />
       </div>
     )
   }
