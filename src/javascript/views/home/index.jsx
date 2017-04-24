@@ -5,7 +5,7 @@ import ProductsStore from '../../stores/products'
 
 import * as ProductsActions from '../../actions/products'
 
-import { CarouselData } from '../../data/carousel'
+import CarouselData from '../../data/carousel'
 
 export default class HomeIndex extends React.Component {
   constructor(props) {
@@ -18,7 +18,7 @@ export default class HomeIndex extends React.Component {
 
   componentWillMount() {
     this.setState({
-      content: CarouselData()
+      content: CarouselData
     })
   }
 
