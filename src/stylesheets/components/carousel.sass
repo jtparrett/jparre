@@ -1,10 +1,26 @@
-.carousel
-  display: flex
-  align-items: center
-  justify-content: space-around
+@import '../settings/*'
+@import '../mixins/*'
 
-  > *
-    flex-shrink: 1
+.carousel
+  overflow: hidden
+  width: 100%
+
+  &__track
+    transition: transform .5s cubic-bezier(0.77, 0, 0.175, 1)
+    width: 100%
+    display: flex
+    align-items: center
+
+    > *
+      flex: none
+      width: 100%
+
+  &__item
+    display: flex
+    justify-content: space-around
+
+    > *
+      flex-shrink: 1
 
   &__image
     width: 470px
