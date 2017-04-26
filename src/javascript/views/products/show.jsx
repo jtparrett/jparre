@@ -11,6 +11,9 @@ import Product from '../../components/product'
 import Footer from '../../components/footer'
 import PurchaseForm from './form'
 
+import CarouselImage from '../../components/carousel-image'
+import { Carousel, CarouselNav } from '../../components/carousel'
+
 export default class ProductShow extends React.Component {
   constructor(props){
     super(props)
@@ -18,7 +21,7 @@ export default class ProductShow extends React.Component {
       handle: props.params.handle,
       products: false,
       modal: false,
-      currentModal: 0
+      current: 0
     }
   }
 
@@ -50,19 +53,19 @@ export default class ProductShow extends React.Component {
   closeModal = () => {
     this.setState({
       modal: false,
-      currentModal: 0
+      current: 0
     })
   }
 
   next = () => {
     this.setState({
-      currentModal: ++this.state.currentModal % this.state.products[0].images.length
+      current: ++this.state.current % this.state.products[0].images.length
     })
   }
 
   change = (index) => {
     this.setState({
-      currentModal: index
+      current: index
     }) 
   }
 
@@ -75,26 +78,18 @@ export default class ProductShow extends React.Component {
       return (<NotFoundView />)
     }
 
-    let { products } = this.state
+    let { products, current } = this.state
 
     if(this.state.modal){
       return (
         <div className="page__main">
-          <section className="modal" onClick={ this.next }>
-            <img src={ products[0].images[this.state.currentModal].src } className="modal__image" />
-          </section>
-
+          <div className="page__inner">
+            <Carousel items={ products[0].images.map(item => {
+              return () => (<CarouselImage src={ [item.src] } large={true} />)
+            }) } current={ current } next={ this.next } />
+          </div>
           <section className="actions">
-            <ul className="nav">
-              { products[0].images.map((item, index) => {
-                let classes = ['nav__button', index === this.state.currentModal && 'active'].join(' nav__button--')
-                return (
-                  <li className="nav__item" key={ index }>
-                    <button className={ classes } onClick={ () => { this.change(index) } }>{ index }</button>
-                  </li>
-                )
-              }) }
-            </ul>
+            <CarouselNav items={ products[0].images } current={ current } change={ this.change } />
             <button className="button" onClick={ this.closeModal }>Close</button>
           </section>
         </div>
