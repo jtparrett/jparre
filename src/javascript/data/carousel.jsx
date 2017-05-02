@@ -14,9 +14,11 @@ import 'images/banner-8.jpg'
 import 'images/banner-9.jpg'
 import 'images/banner-10.jpg'
 import 'images/banner-11.jpg'
+import 'images/banner-12.jpg'
 
 export default
-  [() => (<CarouselImage src={ ['/assets/images/banner-9.jpg', '/assets/images/banner-10.jpg', '/assets/images/banner-11.jpg'] } />), 
+  [() => (<CarouselImage src={ ['/assets/images/banner-12.jpg'] } />),
+  () => (<CarouselImage src={ ['/assets/images/banner-9.jpg', '/assets/images/banner-10.jpg', '/assets/images/banner-11.jpg'] } />), 
   () => (<CarouselImage src={ ['/assets/images/banner-1.jpg', '/assets/images/banner-2.jpg'] } />), 
   active => (<CarouselVideo active={active} src="https://www.facebook.com/JParreApparel/videos/593954704148136" />), 
   () => (<CarouselImage src={ ['/assets/images/banner-3.jpg', '/assets/images/banner-4.jpg', '/assets/images/banner-5.jpg'] } />), 

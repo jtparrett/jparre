@@ -12,7 +12,7 @@ export default class HomeIndex extends React.Component {
           <Carousel items={ CarouselData } />
         </div>
         <section className="actions">
-          <Link to="/products" className="actions__link">Shop Now &rarr;</Link>
+          <Link to="/products" className="button">Shop Now &rarr;</Link>
         </section>
       </div>
     )
