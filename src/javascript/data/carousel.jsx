@@ -28,5 +28,4 @@ export default
   () => (<CarouselImage src={ [Banner3, Banner4, Banner5] } />), 
   active => (<CarouselVideo active={active} src={ Video2 } />), 
   () => (<CarouselImage src={ [Banner6, Banner7] } />), 
-  active => (<CarouselVideo active={active} src={ Video3 } />), 
-  () => (<CarouselImage src={ [Banner8] } />)]
+  active => (<CarouselVideo active={active} src={ Video3 } />)]

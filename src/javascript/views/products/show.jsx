@@ -12,7 +12,7 @@ import Footer from '../../components/footer'
 import PurchaseForm from './form'
 
 import CarouselImage from '../../components/carousel-image'
-import { Carousel, CarouselNav } from '../../components/carousel'
+import Carousel from '../../components/carousel'
 
 export default class ProductShow extends React.Component {
   constructor(props){
@@ -20,8 +20,7 @@ export default class ProductShow extends React.Component {
     this.state = {
       handle: props.params.handle,
       products: false,
-      modal: false,
-      current: 0
+      modal: false
     }
   }
 
@@ -57,18 +56,6 @@ export default class ProductShow extends React.Component {
     })
   }
 
-  next = () => {
-    this.setState({
-      current: ++this.state.current % this.state.products[0].images.length
-    })
-  }
-
-  change = (index) => {
-    this.setState({
-      current: index
-    }) 
-  }
-
   render() {
     if(!this.state.products){
       return (<Loading />)
@@ -86,10 +73,9 @@ export default class ProductShow extends React.Component {
           <div className="page__inner">
             <Carousel items={ products[0].images.map(item => {
               return () => (<CarouselImage src={ [item.src] } large={true} />)
-            }) } current={ current } next={ this.next } />
+            }) } />
           </div>
           <section className="actions">
-            <CarouselNav items={ products[0].images } current={ current } change={ this.change } />
             <button className="button" onClick={ this.closeModal }>Close</button>
           </section>
         </div>

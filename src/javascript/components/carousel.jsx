@@ -11,10 +11,16 @@ export default class Carousel extends React.Component {
     }
   }
 
-  next = () => {
-    this.setState({
-      current: ++this.state.current % this.props.items.length
-    })
+  change = e => {
+    if(e.clientX > window.outerWidth / 2){
+      this.setState({
+        current: Math.min(++this.state.current, this.props.items.length - 1)
+      })
+    } else {
+      this.setState({
+        current: Math.max(--this.state.current, 0)
+      })
+    }
   }
 
   render(){
@@ -23,7 +29,7 @@ export default class Carousel extends React.Component {
 
     return (
       <div className="carousel">
-        <div className="carousel__track" onClick={ this.next } style={{ transform: `translate3d(${-current * 100}%, 0, 0)` }}>
+        <div className="carousel__track" onClick={ this.change } style={{ transform: `translate3d(${-current * 100}%, 0, 0)` }}>
           { items.map((item, i) => {
             return (<div key={ i }>{ item(current === i) }</div>)
           }) }
