@@ -3,35 +3,32 @@ import React from 'react'
 import 'stylesheets/components/carousel'
 import 'stylesheets/components/video'
 
-export class Carousel extends React.Component {
+export default class Carousel extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      current: 0
+    }
+  }
+
+  next = () => {
+    this.setState({
+      current: ++this.state.current % this.props.items.length
+    })
+  }
+
   render(){
-    const { items, current, next } = this.props
+    const { items } = this.props
+    const { current } = this.state
+
     return (
       <div className="carousel">
-        <div className="carousel__track" onClick={ next } style={{ transform: `translate3d(${-current * 100}%, 0, 0)` }}>
+        <div className="carousel__track" onClick={ this.next } style={{ transform: `translate3d(${-current * 100}%, 0, 0)` }}>
           { items.map((item, i) => {
             return (<div key={ i }>{ item(current === i) }</div>)
           }) }
         </div>
       </div>
-    )
-  }
-}
-
-export class CarouselNav extends React.Component {
-  render() {
-    const { items, current, change } = this.props
-    return (
-      <ul className="nav">
-        { items.map((item, index) => {
-          let classes = ['nav__button', index === current && 'active'].join(' nav__button--')
-          return (
-            <li className="nav__item" key={ index }>
-              <button className={ classes } onClick={ () => { change(index) } }>{ index }</button>
-            </li>
-          )
-        }) }
-      </ul>
     )
   }
 }
