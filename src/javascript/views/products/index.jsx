@@ -1,6 +1,5 @@
 import React from 'react'
-
-import ProductsStore from '../../stores/products'
+import PouchDB from 'pouchdb'
 
 import * as ProductsActions from '../../actions/products'
 
@@ -12,25 +11,31 @@ export default class ProductIndex extends React.Component {
   constructor(props){
     super(props)
     this.state = {
+      database: new PouchDB('jparre'),
       products: false
     }
   }
 
   componentWillMount() {
-    ProductsStore.on('change', this.getProducts)
+    this.state.database.changes({live: true, since: 'now'}).on('change', this.getProducts)
   }
 
   componentWillUnmount() {
-    ProductsStore.removeListener('change', this.getProducts) 
+    this.state.database.removeListener('change', this.getProducts)
   }
 
   componentDidMount() {
+    this.getProducts()
     ProductsActions.getProducts()
   }
 
   getProducts = () => {
-    this.setState({
-      products: ProductsStore.getProducts()
+    this.state.database.allDocs({ include_docs: true }).then((response) => {
+      this.setState({
+        products: response.rows.map((row) => {
+          return row.doc
+        })
+      })
     })
   }
 

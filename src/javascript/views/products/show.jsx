@@ -1,7 +1,6 @@
 import React from 'react'
+import PouchDB from 'pouchdb'
 import { browserHistory, Link } from 'react-router'
-
-import ProductsStore from '../../stores/products'
 
 import * as ProductsActions from '../../actions/products'
 
@@ -15,6 +14,7 @@ export default class ProductShow extends React.Component {
   constructor(props){
     super(props)
     this.state = {
+      database: new PouchDB('jparre'),
       handle: props.params.handle,
       products: false,
       modal: false,
@@ -23,20 +23,27 @@ export default class ProductShow extends React.Component {
   }
 
   componentWillMount() {
-    ProductsStore.on('change', this.getResource)
+    this.state.database.changes({live: true, since: 'now'}).on('change', this.getProducts)
   }
 
   componentWillUnmount() {
-    ProductsStore.removeListener('change', this.getResource) 
+    this.state.database.removeListener('change', this.getProducts)
   }
 
   componentDidMount() {
+    this.getProducts()
     ProductsActions.getProduct(this.state.handle)
   }
 
-  getResource = () => {
-    this.setState({
-      products: ProductsStore.getProducts()
+  getProducts = () => {
+    this.state.database.allDocs({ include_docs: true }).then((response) => {
+      this.setState({
+        products: response.rows.map((row) => {
+          return row.doc
+        }).filter((product) => {
+          return product.handle === this.state.handle
+        })
+      })
     })
   }
 
@@ -107,7 +114,7 @@ export default class ProductShow extends React.Component {
           <Product product={ products[0] } imageSize={7} onClick={ this.openModal }/>
           <article className="detail">
             <h1 className="detail__title">{ products[0].title }</h1>
-            <div dangerouslySetInnerHTML={{ __html: products[0].attrs.body_html }} className="wysiwyg"></div>
+            <div dangerouslySetInnerHTML={{ __html: products[0].body_html }} className="wysiwyg"></div>
             <p className="detail__price">&pound;{ products[0].variants[0].price }</p>
             <PurchaseForm product={ products[0] } />
           </article>

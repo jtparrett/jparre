@@ -33,6 +33,7 @@
     "node-bourbon": "^4.2.8",
     "node-sass": "^3.10.1",
     "postcss-loader": "^1.0.0",
+    "pouchdb": "^6.1.1",
     "react": "^0.14.8",
     "react-click-outside": "^2.2.0",
     "react-dom": "^0.14.6",
