@@ -26,8 +26,8 @@ export default class Carousel extends React.Component {
     const { current } = this.state
 
     return (
-      <div className="carousel">
-        <div className="carousel__track" onClick={ this.change } style={{ transform: `translate3d(${-current * 100}%, 0, 0)` }}>
+      <div className="carousel" onClick={ this.change }>
+        <div className="carousel__track" style={{ transform: `translate3d(${-current * 100}%, 0, 0)` }}>
           { items.map((item, i) => {
             return (<div key={ i }>{ item(current === i) }</div>)
           }) }
