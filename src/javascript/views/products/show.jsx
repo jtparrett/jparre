@@ -76,7 +76,7 @@ export default class ProductShow extends React.Component {
             }) } />
           </div>
           <section className="actions">
-            <button className="button" onClick={ this.closeModal }>Close</button>
+            <button className="button" onClick={ this.closeModal }>&larr; Back to Product</button>
           </section>
         </div>
       )
@@ -85,7 +85,7 @@ export default class ProductShow extends React.Component {
     return (
       <div>
         <section className="wrapper wrapper--slim">
-          <Product product={ products[0] } imageSize={7} onClick={ this.openModal }/>
+          <Product product={ products[0] } imageSize={7} onClick={ this.openModal } enlarge={true} />
           <article className="detail">
             <h1 className="detail__title">{ products[0].title }</h1>
             <div dangerouslySetInnerHTML={{ __html: products[0].attrs.body_html }} className="wysiwyg"></div>
