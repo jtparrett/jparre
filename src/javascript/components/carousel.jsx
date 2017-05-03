@@ -8,6 +8,7 @@ export default class Carousel extends React.Component {
     super(props)
     this.state = {
       current: 0,
+      isTouch: false,
       touchOffset: 0,
       canMove: false
     }
@@ -26,6 +27,7 @@ export default class Carousel extends React.Component {
   touchStart = e => {
     this.setState({
       touchOffset: e.nativeEvent.layerX,
+      isTouch: true,
       canMove: true
     })
   }
@@ -51,10 +53,10 @@ export default class Carousel extends React.Component {
 
   render(){
     const { items } = this.props
-    const { current } = this.state
+    const { current, isTouch } = this.state
 
     return (
-      <div className="carousel" onClick={ this.change } onTouchStart={ this.touchStart } onTouchMove={ this.touch }>
+      <div className="carousel" onClick={ !isTouch && this.change } onTouchStart={ this.touchStart } onTouchMove={ isTouch && this.touch }>
         <div className="carousel__track" style={{ transform: `translate3d(${-current * 100}%, 0, 0)` }}>
           { items.map((item, i) => (<div key={i}>{ item(current === i) }</div>)) }
         </div>
