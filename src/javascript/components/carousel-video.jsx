@@ -2,9 +2,7 @@ import React from 'react'
 
 export default class CarouselVideo extends React.Component {
   componentWillReceiveProps(props) {
-    if(props.active){
-      this.video.play()
-    } else {
+    if(!props.active){
       this.video.pause()
     }
   }

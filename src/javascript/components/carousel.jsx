@@ -12,15 +12,13 @@ export default class Carousel extends React.Component {
   }
 
   change = e => {
-    if(e.clientX > window.outerWidth / 2){
-      this.setState({
-        current: Math.min(++this.state.current, this.props.items.length - 1)
-      })
-    } else {
-      this.setState({
-        current: Math.max(--this.state.current, 0)
-      })
-    }
+    this.setState({
+      current: (e.clientX > window.outerWidth / 2) ? (
+        Math.min(++this.state.current, this.props.items.length - 1)
+      ) : (
+        Math.max(--this.state.current, 0)
+      )
+    })
   }
 
   render(){
