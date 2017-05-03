@@ -7,7 +7,7 @@ export default class ContactIndex extends React.Component {
     return (
       <div>
         <section className="wrapper wrapper--slim">
-          <article className="article">
+          <article className="article article--center">
             <header className="article__header">
               <h1>Contact Us</h1>
               <p>Require a refund or wish to be a stockist?<br />

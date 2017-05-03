@@ -40,6 +40,10 @@ module.exports = {
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         loader: 'file?name=assets/images/[name].[ext]'
+      },
+      {
+        test: /\.(mp4)$/i,
+        loader: 'file?name=assets/videos/[name].[ext]'
       }
     ]
   },

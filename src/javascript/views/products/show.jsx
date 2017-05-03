@@ -11,14 +11,16 @@ import Product from '../../components/product'
 import Footer from '../../components/footer'
 import PurchaseForm from './form'
 
+import CarouselImage from '../../components/carousel-image'
+import Carousel from '../../components/carousel'
+
 export default class ProductShow extends React.Component {
   constructor(props){
     super(props)
     this.state = {
       handle: props.params.handle,
       products: false,
-      modal: false,
-      currentModal: 0
+      modal: false
     }
   }
 
@@ -50,20 +52,8 @@ export default class ProductShow extends React.Component {
   closeModal = () => {
     this.setState({
       modal: false,
-      currentModal: 0
+      current: 0
     })
-  }
-
-  next = () => {
-    this.setState({
-      currentModal: ++this.state.currentModal % this.state.products[0].images.length
-    })
-  }
-
-  change = (index) => {
-    this.setState({
-      currentModal: index
-    }) 
   }
 
   render() {
@@ -75,27 +65,18 @@ export default class ProductShow extends React.Component {
       return (<NotFoundView />)
     }
 
-    let { products } = this.state
+    let { products, current } = this.state
 
     if(this.state.modal){
       return (
         <div className="page__main">
-          <section className="modal" onClick={ this.next }>
-            <img src={ products[0].images[this.state.currentModal].src } className="modal__image" />
-          </section>
-
+          <div className="page__inner">
+            <Carousel items={ products[0].images.map(item => {
+              return () => (<CarouselImage src={ [item.src] } large={true} />)
+            }) } />
+          </div>
           <section className="actions">
-            <ul className="nav">
-              { products[0].images.map((item, index) => {
-                let classes = ['nav__button', index === this.state.currentModal && 'active'].join(' nav__button--')
-                return (
-                  <li className="nav__item" key={ index }>
-                    <button className={ classes } onClick={ () => { this.change(index) } }>{ index }</button>
-                  </li>
-                )
-              }) }
-            </ul>
-            <button className="button" onClick={ this.closeModal }>Close</button>
+            <button className="button" onClick={ this.closeModal }>&larr; Back to Product</button>
           </section>
         </div>
       )
@@ -104,7 +85,7 @@ export default class ProductShow extends React.Component {
     return (
       <div>
         <section className="wrapper wrapper--slim">
-          <Product product={ products[0] } imageSize={7} onClick={ this.openModal }/>
+          <Product product={ products[0] } imageSize={7} onClick={ this.openModal } enlarge={true} />
           <article className="detail">
             <h1 className="detail__title">{ products[0].title }</h1>
             <div dangerouslySetInnerHTML={{ __html: products[0].attrs.body_html }} className="wysiwyg"></div>
