@@ -9,54 +9,54 @@ export default class Carousel extends React.Component {
     this.state = {
       current: 0,
       isTouch: false,
-      touchOffset: 0,
-      canMove: false
+      canMove: false,
+      touchOffset: 0
     }
   }
 
-  change = e => {
+  next = current => Math.min(++current, this.props.items.length - 1)
+  prev = current => Math.max(--current, 0)
+
+  update = thunk => {
     this.setState({
-      current: (e.clientX > window.outerWidth / 2) ? (
-        Math.min(++this.state.current, this.props.items.length - 1)
-      ) : (
-        Math.max(--this.state.current, 0)
-      )
+      current: thunk(this.state.current),
+      canMove: false
     })
+  }
+
+  onClick = e => {
+    if(e.clientX > window.outerWidth / 2){
+      this.update(this.next)
+    } else {
+      this.update(this.prev)
+    }
   }
 
   touchStart = e => {
     this.setState({
-      touchOffset: e.nativeEvent.layerX,
       isTouch: true,
-      canMove: true
+      canMove: true,
+      touchOffset: e.nativeEvent.layerX
     })
   }
 
-  touch = e => {
-    let { current, canMove, touchOffset } = this.state
-    if(canMove){
-      if(e.nativeEvent.layerX < touchOffset - 30){
-        this.setState({
-          current: Math.min(++current, this.props.items.length - 1),
-          canMove: false
-        })
-      }
+  touchMove = e => {
+    const { touchOffset } = this.state
+    if(e.nativeEvent.layerX < touchOffset - 30){
+      this.update(this.next)
+    }
 
-      if(e.nativeEvent.layerX > touchOffset + 30){
-        this.setState({
-          current: Math.max(--current, 0),
-          canMove: false
-        }) 
-      }
+    if(e.nativeEvent.layerX > touchOffset + 30){
+      this.update(this.prev)
     }
   }
 
   render(){
     const { items } = this.props
-    const { current, isTouch } = this.state
+    const { current, isTouch, canMove } = this.state
 
     return (
-      <div className="carousel" onClick={ !isTouch && this.change } onTouchStart={ this.touchStart } onTouchMove={ isTouch && this.touch }>
+      <div className="carousel" onClick={ !isTouch && this.onClick } onTouchStart={ this.touchStart } onTouchMove={ canMove && this.touchMove }>
         <div className="carousel__track" style={{ transform: `translate3d(${-current * 100}%, 0, 0)` }}>
           { items.map((item, i) => (<div key={i}>{ item(current === i) }</div>)) }
         </div>

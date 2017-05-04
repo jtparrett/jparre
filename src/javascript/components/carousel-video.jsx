@@ -11,7 +11,7 @@ export default class CarouselVideo extends React.Component {
     return (
       <div className="carousel__item">
         <div className="video">
-          <video src={ this.props.src } ref={video => this.video = video} controls />
+          <video src={ require(`videos/${this.props.src}.mp4`) } ref={video => this.video = video} controls poster={ require(`images/${this.props.src}.jpg`) } />
         </div>
       </div>
     )

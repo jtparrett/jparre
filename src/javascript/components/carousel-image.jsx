@@ -8,7 +8,7 @@ export default class CarouselImage extends React.Component {
         { this.props.src.map((src, index) => {
           return (
             <div key={ index } className={ classes }>
-              <img src={ src } />
+              <img src={ require(`images/${src}.jpg`) } />
             </div>
           )
         }) }

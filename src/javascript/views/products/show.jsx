@@ -76,7 +76,7 @@ export default class ProductShow extends React.Component {
             }) } />
           </div>
           <section className="actions">
-            <button className="button" onClick={ this.closeModal }>&larr; Back to Product</button>
+            <button className="button" onClick={ this.closeModal }>&larr; Return to Product</button>
           </section>
         </div>
       )
@@ -95,7 +95,7 @@ export default class ProductShow extends React.Component {
         </section>
 
         <section className="actions">
-          <Link to="/products" className="actions__link">&larr; Back to Products</Link>
+          <Link to="/products" className="actions__link">&larr; Return to The Collection</Link>
         </section>
         <Footer />
       </div>
