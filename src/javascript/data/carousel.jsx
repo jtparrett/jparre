@@ -4,11 +4,11 @@ import CarouselImage from '../components/carousel-image'
 import CarouselVideo from '../components/carousel-video'
 
 export default
-  [() => (<CarouselImage src={ ['banner-12'] } />),
-  () => (<CarouselImage src={ ['banner-9', 'banner-10', 'banner-11'] } />), 
-  () => (<CarouselImage src={ ['banner-1', 'banner-2'] } />), 
+  [() => (<CarouselImage src={ [require('images/banner-12.jpg')] } />),
+  () => (<CarouselImage src={ [require('images/banner-9.jpg'), require('images/banner-10.jpg'), require('images/banner-11.jpg')] } />), 
+  () => (<CarouselImage src={ [require('images/banner-1.jpg'), require('images/banner-2.jpg')] } />), 
   active => (<CarouselVideo active={active} src={ 'video-1' } />), 
-  () => (<CarouselImage src={ ['banner-3', 'banner-4', 'banner-5'] } />), 
+  () => (<CarouselImage src={ [require('images/banner-3.jpg'), require('images/banner-4.jpg'), require('images/banner-5.jpg')] } />), 
   active => (<CarouselVideo active={active} src={ 'video-2' } />), 
-  () => (<CarouselImage src={ ['banner-6', 'banner-7'] } />), 
+  () => (<CarouselImage src={ [require('images/banner-6.jpg'), require('images/banner-7.jpg')] } />), 
   active => (<CarouselVideo active={active} src={ 'video-3' } />)]
