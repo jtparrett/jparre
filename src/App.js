@@ -6,6 +6,7 @@ import {InMemoryCache} from 'apollo-cache-inmemory'
 import {createHttpLink} from 'apollo-link-http'
 
 import Header from './organisms/Header'
+import Footer from './organisms/Footer'
 import Home from './pages/Home'
 import Products from './pages/Products'
 import ProductsShow from './pages/ProductsShow'
@@ -32,6 +33,7 @@ export default () => (
           <Route path="/products/:handle" component={ProductsShow} />
           <Route path="/products" component={Products} />
         </Switch>
+        <Footer />
       </React.Fragment>
     </BrowserRouter>
   </ApolloProvider>

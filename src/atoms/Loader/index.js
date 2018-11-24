@@ -7,11 +7,11 @@ const rotate = keyframes`
 `
 
 export default styled.div`
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 100%;
-  border: 5px solid #fafafa;
-  border-top: 5px solid #000;
+  border: 4px solid #fafafa;
+  border-top: 4px solid #000;
   margin: 60px auto;
   animation: ${rotate} 0.5s linear infinite;
 `
