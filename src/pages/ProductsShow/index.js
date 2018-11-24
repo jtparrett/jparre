@@ -49,7 +49,7 @@ export default ({match}) => (
       const product = data.shop.productByHandle
 
       return (
-        <Container slim={true}>
+        <Container slim>
           <ProductImage product={product} />
           <ProductDetail product={product} />
           <Spacer>

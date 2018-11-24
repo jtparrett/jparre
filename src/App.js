@@ -10,6 +10,7 @@ import Footer from './organisms/Footer'
 import Home from './pages/Home'
 import Products from './pages/Products'
 import ProductsShow from './pages/ProductsShow'
+import PrivacyPolicy from './pages/PrivacyPolicy'
 
 const httpLink = createHttpLink({
   uri: 'https://j-parre.myshopify.com/api/graphql',
@@ -32,6 +33,7 @@ export default () => (
           <Route path="/" exact component={Home} />
           <Route path="/products/:handle" component={ProductsShow} />
           <Route path="/products" component={Products} />
+          <Route path="/privacy-policy" component={PrivacyPolicy} />
         </Switch>
         <Footer />
       </React.Fragment>
