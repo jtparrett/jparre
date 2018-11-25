@@ -18,7 +18,7 @@ const GET_PRODUCT = gql`
         title
         descriptionHtml
         availableForSale
-        variants(first:20) {
+        variants(first:8) {
           edges {
             node {
               id
@@ -28,7 +28,7 @@ const GET_PRODUCT = gql`
             }
           }
         }
-        images(first:1) {
+        images(first:5) {
           edges {
             node {
               transformedSrc(maxWidth:900)

@@ -25,7 +25,7 @@ export default ({product}) => (
     </Main>
 
     {product.availableForSale &&
-      <ProductForm variants={product.variants.edges} />
+      <ProductForm product={product} />
     }
   </React.Fragment>
 )

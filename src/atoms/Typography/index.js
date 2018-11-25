@@ -25,6 +25,7 @@ export default styled(Text)`
   font-size: ${props => props.heading ? '20px' : '12px'};
   line-height: 1.2;
   font-weight: ${props => props.bold ? '700' : '400'};
+  white-space: pre-line;
   ${props => props.error && 'color: red;'}
   ${props => props.marginBottom && 'margin-bottom: 10px;'}
   ${props => props.marginTop && 'margin-top: 10px;'}
