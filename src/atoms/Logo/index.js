@@ -13,6 +13,7 @@ const Main = styled(Link)`
   display: block;
   width: 140px;
   margin: 0 auto;
+  max-width: 30%;
 `
 
 export default () => (

@@ -21,6 +21,7 @@ export default styled(Button)`
   cursor: pointer;
   display: inline-block;
   text-decoration: none;
+  margin: 0;
 
   :hover {
     color: #000;
