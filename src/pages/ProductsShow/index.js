@@ -28,7 +28,7 @@ const GET_PRODUCT = gql`
             }
           }
         }
-        images(first:5) {
+        images(first:2) {
           edges {
             node {
               transformedSrc(maxWidth:900)
