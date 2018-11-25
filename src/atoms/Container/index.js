@@ -5,4 +5,6 @@ export default styled.div`
   max-width: 100%;
   overflow: hidden;
   margin: 0 auto;
+  box-sizing: border-box;
+  ${props => props.padding && `padding: ${props.padding};`}
 `

@@ -27,7 +27,7 @@ export default () => (
       const {title, body} = data.shop.privacyPolicy
 
       return (
-        <Container slim>
+        <Container padding="0 20px" slim>
           <Typography heading>{title}</Typography>
           <Typography marginTop>{body}</Typography>
         </Container>
