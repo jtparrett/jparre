@@ -50,8 +50,8 @@ export default ({variants}) => (
           })
         }}>
           <Select name="variant">
-            {variants.map(({node}) => node.availableForSale && (
-              <option value={node.id} key={node.id}>{node.title}</option>
+            {variants.map(({node}) => (
+              <option value={node.id} disabled={!node.availableForSale} key={node.id}>{node.title}</option>
             ))}
           </Select>
 

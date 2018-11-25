@@ -9,6 +9,7 @@ import Container from '../../atoms/Container'
 import ProductImage from '../../molecules/ProductImage'
 import ProductDetail from '../../molecules/ProductDetail'
 import Spacer from '../../atoms/Spacer'
+import ErrorPage from '../../pages/404'
 
 const GET_PRODUCT = gql`
   query ($handle:String!){
@@ -47,6 +48,8 @@ export default ({match}) => (
       if(loading) return (<Loader />)
 
       const product = data.shop.productByHandle
+
+      if(!product) return (<ErrorPage />)
 
       return (
         <Container slim>

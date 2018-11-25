@@ -9,6 +9,8 @@ const Text = ({
   bold, 
   error,
   marginTop,
+  marginBottom,
+  textAlign,
   ...props
 }) => (
   <Component className={className} {...props}>
@@ -24,5 +26,7 @@ export default styled(Text)`
   line-height: 1.2;
   font-weight: ${props => props.bold ? '700' : '400'};
   ${props => props.error && 'color: red;'}
+  ${props => props.marginBottom && 'margin-bottom: 10px;'}
   ${props => props.marginTop && 'margin-top: 10px;'}
+  ${props => props.textAlign && `text-align: ${props.textAlign};`}
 `
