@@ -44,7 +44,7 @@ const View = ({product, sizeChartOpen, sizeChartToggle}) => (
       if(loading) return (<Loader />)
 
       if(data){
-        window.location.href = data.checkoutCreate.checkout.webUrl
+        window.location.assign(data.checkoutCreate.checkout.webUrl)
         return (<Loader />)
       }
 
