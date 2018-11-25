@@ -90,7 +90,7 @@ const View = ({product, sizeChartOpen, sizeChartToggle}) => (
 
 
           {(sizeChartImg && sizeChartOpen) &&
-            <SizeChart src={sizeChartImg.node.transformedSrc} />
+            <SizeChart src={sizeChartImg.node.transformedSrc} alt="size chart" />
           }
         </React.Fragment>
       )
