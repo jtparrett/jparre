@@ -5,8 +5,13 @@ import styled from 'styled-components'
 import Typography from '../../atoms/Typography'
 import Spacer from '../../atoms/Spacer'
 
-const Main = styled(Spacer)`
-  padding-bottom: 100px;
+const Main = styled.div`
+  padding: 60px 0 100px;
+  text-align: center;
+
+  @media all and (max-width: 568px){
+    padding: 30px 0 60px;
+  }
 `
 
 const Links = styled.div`
