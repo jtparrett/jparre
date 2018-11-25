@@ -20,7 +20,7 @@ export default ({product}) => (
       <HTMLRenderer>{product.descriptionHtml}</HTMLRenderer>
       <Typography>&pound;{product.variants.edges[0].node.price}</Typography>
       {!product.availableForSale &&
-        <Typography marginTop error>Out of Stock</Typography>
+        <Typography marginTop error>Sold Out</Typography>
       }
     </Main>
 

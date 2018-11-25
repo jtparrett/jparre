@@ -7,6 +7,7 @@ const Select = styled.select`
   background-color: transparent;
   outline: none;
   line-height: 1.5;
+  margin: 0;
   font-family: Open Sans, sans-serif;
   text-transform: uppercase;
   border: none;

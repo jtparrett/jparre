@@ -18,8 +18,6 @@ const SizeChart = styled.img`
   width: 100%;
   margin-top: 20px;
   display: block;
-  box-sizing: border-box;
-  border: 1px solid #000;
 `
 
 const SizeChartLink = styled(Typography)`
@@ -69,7 +67,7 @@ const View = ({product, sizeChartOpen, sizeChartToggle}) => (
           }}>
             <Select name="variant">
               {product.variants.edges.map(({node}) => (
-                <option value={node.id} disabled={!node.availableForSale} key={node.id}>{node.title}</option>
+                <option value={node.id} disabled={!node.availableForSale} key={node.id}>{node.title} {!node.availableForSale && '- Sold Out'}</option>
               ))}
             </Select>
 
