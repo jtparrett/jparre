@@ -27,7 +27,7 @@ const Links = styled.div`
 
 export default () => (
   <Main>
-    <Typography marginBottom>&copy;2018 J.Parré Apparel Co.</Typography>
+    <Typography marginBottom>J.Parré Apparel Co.</Typography>
     <Links>
       <Typography Component={Link} to="/products">Products</Typography>
       <Typography Component={Link} to="/contact">Contact</Typography>
