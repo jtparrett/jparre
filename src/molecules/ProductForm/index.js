@@ -71,7 +71,11 @@ const View = ({product, sizeChartOpen, sizeChartToggle}) => (
               ))}
             </Select>
 
-            <Button type="submit">Purchase</Button>
+            { product.tags.includes('pre-order') ? (
+              <Button type="submit">Pre-Order</Button>
+            ) : (
+              <Button type="submit">Purchase</Button>
+            )}
 
             {sizeChartImg &&
               <SizeChartLink 

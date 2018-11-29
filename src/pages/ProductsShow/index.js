@@ -18,6 +18,7 @@ const GET_PRODUCT = gql`
         title
         descriptionHtml
         availableForSale
+        tags
         variants(first:8) {
           edges {
             node {
