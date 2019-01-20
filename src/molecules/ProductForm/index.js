@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import styled from 'styled-components'
 import {Mutation} from 'react-apollo'
 import gql from 'graphql-tag'
@@ -51,7 +51,7 @@ const View = ({product, sizeChartOpen, sizeChartToggle}) => (
       const sizeChartImg = product.images.edges[1]
 
       return (
-        <React.Fragment>
+        <Fragment>
           <Form onSubmit={(e) => {
             e.preventDefault()
             checkout({
@@ -94,7 +94,7 @@ const View = ({product, sizeChartOpen, sizeChartToggle}) => (
           {(sizeChartImg && sizeChartOpen) &&
             <SizeChart src={sizeChartImg.node.transformedSrc} alt="size chart" />
           }
-        </React.Fragment>
+        </Fragment>
       )
     }}
   </Mutation>

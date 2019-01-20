@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import {Link} from 'react-router-dom'
 
 import Button from '../../atoms/Button'
@@ -9,12 +9,12 @@ import VideoFile from '../../assets/video-4.mp4'
 import Poster from '../../assets/video-4-poster.jpg'
 
 export default () => (
-  <React.Fragment>
+  <Fragment>
     <Container slim>
       <Video poster={Poster} src={VideoFile} controls />
     </Container>
     <Spacer>
       <Button Component={Link} to="/products">Shop the collection &rarr;</Button>
     </Spacer>
-  </React.Fragment>
+  </Fragment>
 )

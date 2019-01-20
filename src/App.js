@@ -1,6 +1,7 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import {ApolloProvider} from 'react-apollo'
-import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import {Router, Route, Switch} from 'react-router-dom'
+import {createBrowserHistory} from 'history'
 import {ApolloClient} from 'apollo-client'
 import {InMemoryCache} from 'apollo-cache-inmemory'
 import {createHttpLink} from 'apollo-link-http'
@@ -14,6 +15,8 @@ import PrivacyPolicy from './pages/PrivacyPolicy'
 import Contact from './pages/Contact'
 import ErrorPage from './pages/404'
 
+const history = createBrowserHistory()
+
 const httpLink = createHttpLink({
   uri: 'https://j-parre.myshopify.com/api/graphql',
   headers: {
@@ -26,10 +29,16 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 })
 
+history.listen((location) => {
+  window.gtag('config', 'UA-99705061-1', {
+    page_path: location.pathname
+  })  
+})
+
 export default () => (
   <ApolloProvider client={client}>
-    <BrowserRouter>
-      <React.Fragment>
+    <Router history={history}>
+      <Fragment>
         <Header />
         <Switch>
           <Route path="/" exact component={Home} />
@@ -40,7 +49,7 @@ export default () => (
           <Route component={ErrorPage} />
         </Switch>
         <Footer />
-      </React.Fragment>
-    </BrowserRouter>
+      </Fragment>
+    </Router>
   </ApolloProvider>
 )

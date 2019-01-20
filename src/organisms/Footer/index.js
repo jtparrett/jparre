@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom'
 import styled from 'styled-components'
 
 import Typography from '../../atoms/Typography'
-import Spacer from '../../atoms/Spacer'
 
 const Main = styled.div`
   padding: 60px 0 100px;

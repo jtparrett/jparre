@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import styled from 'styled-components'
 
 import Typography from '../../atoms/Typography'
@@ -14,7 +14,7 @@ const Title = styled(Typography)`
 `
 
 export default ({product}) => (
-  <React.Fragment>
+  <Fragment>
     <Main>
       <Title heading Component={'h1'}>{product.title}</Title>
       <HTMLRenderer>{product.descriptionHtml}</HTMLRenderer>
@@ -27,5 +27,5 @@ export default ({product}) => (
     {product.availableForSale &&
       <ProductForm product={product} />
     }
-  </React.Fragment>
+  </Fragment>
 )
