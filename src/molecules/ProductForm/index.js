@@ -1,8 +1,7 @@
-import React, {Fragment} from 'react'
+import React, {Fragment, useState} from 'react'
 import styled from 'styled-components'
 import {Mutation} from 'react-apollo'
 import gql from 'graphql-tag'
-import {withState} from 'recompose'
 
 import Button from '../../atoms/Button'
 import Select from '../../atoms/Select'
@@ -35,69 +34,73 @@ const ADD_LINE_ITEM = gql`
   }
 `
 
-const View = ({product, sizeChartOpen, sizeChartToggle}) => (
-  <Mutation mutation={ADD_LINE_ITEM}>
-    {(checkout, {error, loading, data}) => {
-      
-      if(error) return (<p>Error checking out</p>)
+const View = ({product}) => {
+  const [sizeChartOpen, sizeChartToggle] = useState(false)
 
-      if(loading) return (<Loader />)
+  return (
+    <Mutation mutation={ADD_LINE_ITEM}>
+      {(checkout, {error, loading, data}) => {
+        
+        if(error) return (<p>Error checking out</p>)
 
-      if(data){
-        window.location.replace(data.checkoutCreate.checkout.webUrl)
-        return (<Loader />)
-      }
+        if(loading) return (<Loader />)
 
-      const sizeChartImg = product.images.edges[1]
+        if(data){
+          window.location.replace(data.checkoutCreate.checkout.webUrl)
+          return (<Loader />)
+        }
 
-      return (
-        <Fragment>
-          <Form onSubmit={(e) => {
-            e.preventDefault()
-            checkout({
-              variables: {
-                input: {
-                  lineItems: [{
-                    quantity: 1,
-                    variantId: e.target.variant.value
-                  }]
+        const sizeChartImg = product.images.edges[1]
+
+        return (
+          <Fragment>
+            <Form onSubmit={(e) => {
+              e.preventDefault()
+              checkout({
+                variables: {
+                  input: {
+                    lineItems: [{
+                      quantity: 1,
+                      variantId: e.target.variant.value
+                    }]
+                  }
                 }
+              })
+            }}>
+              <Select name="variant">
+                {product.variants.edges.map(({node}) => (
+                  <option value={node.id} disabled={!node.availableForSale} key={node.id}>{node.title} {!node.availableForSale && '- Sold Out'}</option>
+                ))}
+              </Select>
+
+              { product.tags.includes('pre-order') ? (
+                <Button type="submit">Pre-Order</Button>
+              ) : (
+                <Button type="submit">Purchase</Button>
+              )}
+
+              {sizeChartImg &&
+                <SizeChartLink 
+                  onClick={(e) => {
+                    e.preventDefault()
+                    sizeChartToggle(!sizeChartOpen)
+                  }} 
+                  href="#"
+                  Component="a">
+                    (View size chart)
+                </SizeChartLink>
               }
-            })
-          }}>
-            <Select name="variant">
-              {product.variants.edges.map(({node}) => (
-                <option value={node.id} disabled={!node.availableForSale} key={node.id}>{node.title} {!node.availableForSale && '- Sold Out'}</option>
-              ))}
-            </Select>
+            </Form>
 
-            { product.tags.includes('pre-order') ? (
-              <Button type="submit">Pre-Order</Button>
-            ) : (
-              <Button type="submit">Purchase</Button>
-            )}
 
-            {sizeChartImg &&
-              <SizeChartLink 
-                onClick={(e) => {
-                  e.preventDefault()
-                  sizeChartToggle(!sizeChartOpen)
-                }} 
-                href="#"
-                Component="a">
-                  (View size chart)
-              </SizeChartLink>
+            {(sizeChartImg && sizeChartOpen) &&
+              <SizeChart src={sizeChartImg.node.transformedSrc} alt="size chart" />
             }
-          </Form>
+          </Fragment>
+        )
+      }}
+    </Mutation>
+  )
+}
 
-
-          {(sizeChartImg && sizeChartOpen) &&
-            <SizeChart src={sizeChartImg.node.transformedSrc} alt="size chart" />
-          }
-        </Fragment>
-      )
-    }}
-  </Mutation>
-)
-
-export default withState('sizeChartOpen', 'sizeChartToggle', false)(View)
+export default View
