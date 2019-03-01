@@ -16,6 +16,6 @@ const Renderer = styled.div`
   }
 `
 
-export default ({children, className}) => (
+export default ({ children, className }) => (
   <Renderer className={className} dangerouslySetInnerHTML={{ __html: children }} />
 )

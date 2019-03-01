@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 import Typography from '../../atoms/Typography'
@@ -13,19 +13,22 @@ const Title = styled(Typography)`
   margin-bottom: 10px;
 `
 
-export default ({product}) => (
-  <Fragment>
-    <Main>
-      <Title heading Component={'h1'}>{product.title}</Title>
-      <HTMLRenderer>{product.descriptionHtml}</HTMLRenderer>
-      <Typography>&pound;{product.variants.edges[0].node.price}</Typography>
-      {!product.availableForSale &&
-        <Typography marginTop error>Sold Out</Typography>
-      }
-    </Main>
+export default (product) => {
+  const { title, descriptionHtml, variants, availableForSale } = product
+  return (
+    <>
+      <Main>
+        <Title heading Component={'h1'}>{title}</Title>
+        <HTMLRenderer>{descriptionHtml}</HTMLRenderer>
+        <Typography>&pound;{variants.edges[0].node.price}</Typography>
+        {!availableForSale &&
+          <Typography marginTop error>Sold Out</Typography>
+        }
+      </Main>
 
-    {product.availableForSale &&
-      <ProductForm product={product} />
-    }
-  </Fragment>
-)
+      {availableForSale &&
+        <ProductForm {...product} />
+      }
+    </>
+  )
+}

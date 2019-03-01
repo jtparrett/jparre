@@ -2,21 +2,21 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Text = ({
-  Component = 'p', 
-  children, 
-  className, 
-  heading, 
-  bold, 
+  Component = 'p',
+  children,
+  className,
+  heading,
+  bold,
   error,
   marginTop,
   marginBottom,
   textAlign,
   ...props
 }) => (
-  <Component className={className} {...props}>
-    {children}
-  </Component>
-)
+    <Component className={className} {...props}>
+      {children}
+    </Component>
+  )
 
 export default styled(Text)`
   font-family: ${props => props.heading ? 'Playfair Display' : 'Open Sans'}, sans-serif;

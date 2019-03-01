@@ -17,7 +17,7 @@ const Image = styled.img`
   max-height: 75%;
 `
 
-export default ({src, alt}) => (
+export default ({ src, alt }) => (
   <Main>
     <Image src={src} alt={alt} />
   </Main>

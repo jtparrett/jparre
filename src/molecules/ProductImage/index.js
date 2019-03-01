@@ -2,8 +2,8 @@ import React from 'react'
 
 import SquareImage from '../../atoms/SquareImage'
 
-export default ({product}) => (
-  <SquareImage 
-    src={product.images.edges[0].node.transformedSrc}
-    alt={product.title} />
+export default ({ images, title }) => (
+  <SquareImage
+    src={images.edges[0].node.transformedSrc}
+    alt={title} />
 )

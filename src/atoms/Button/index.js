@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import Typography from '../../atoms/Typography'
 
-const Button = ({Component = 'button', children, className, ...props}) => (
+const Button = ({ Component = 'button', children, className, ...props }) => (
   <Component className={className} {...props}>
     <Typography bold={true}>{children}</Typography>
   </Component>

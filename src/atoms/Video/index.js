@@ -11,7 +11,7 @@ const Main = styled.div`
   }
 `
 
-const Video = styled.video`
+const Iframe = styled.iframe`
   position: absolute;
   top: 0;
   left: 0;
@@ -21,6 +21,6 @@ const Video = styled.video`
 
 export default (props) => (
   <Main>
-    <Video controls {...props} />
+    <Iframe {...props} frameBorder="0" allowFullScreen={true} />
   </Main>
 )

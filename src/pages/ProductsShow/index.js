@@ -1,6 +1,6 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
-import {Query} from 'react-apollo'
+import { Link } from 'react-router-dom'
+import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 
 import Loader from '../../atoms/Loader'
@@ -41,21 +41,21 @@ const GET_PRODUCT = gql`
   }
 `
 
-export default ({match}) => (
+export default ({ match }) => (
   <Query query={GET_PRODUCT} variables={{ handle: match.params.handle }}>
-    {({error, data, loading}) => {
-      if(error) return (<p>Error Loading Product</p>)
+    {({ error, data, loading }) => {
+      if (error) return (<p>Error Loading Product</p>)
 
-      if(loading) return (<Loader />)
+      if (loading) return (<Loader />)
 
       const product = data.shop.productByHandle
 
-      if(!product) return (<ErrorPage />)
+      if (!product) return (<ErrorPage />)
 
       return (
         <Container slim>
-          <ProductImage product={product} />
-          <ProductDetail product={product} />
+          <ProductImage {...product} />
+          <ProductDetail {...product} />
           <Spacer>
             <Typography Component={Link} to="/products">&larr; Return to The Collection</Typography>
           </Spacer>

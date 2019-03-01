@@ -1,9 +1,12 @@
 import React from 'react'
 import gql from 'graphql-tag'
-import {Query} from 'react-apollo'
+import { Query } from 'react-apollo'
+import { Link } from 'react-router-dom'
 
 import Loader from '../../atoms/Loader'
-import ProductsListing from '../../organisms/ProductsListing'
+import Container from '../../atoms/Container'
+import { Grid, GridItem } from '../../atoms/Grid'
+import ProductImage from '../../molecules/ProductImage'
 
 const GET_COLLECTION = gql`
   query ($handle:String!) {
@@ -32,13 +35,23 @@ const GET_COLLECTION = gql`
 
 export default () => (
   <Query query={GET_COLLECTION} variables={{ handle: 'all' }}>
-    {({error, loading, data}) => {
-      if(error) return (<p>Error Loading Products</p>)
+    {({ error, loading, data }) => {
+      if (error) return (<p>Error Loading Products</p>)
 
-      if(loading) return (<Loader />)
+      if (loading) return (<Loader />)
 
       return (
-        <ProductsListing products={data.shop.collectionByHandle.products.edges} />
+        <Container>
+          <Grid>
+            {data.shop.collectionByHandle.products.edges.map(({ node }) => (
+              <GridItem key={node.id}>
+                <Link to={`/products/${node.handle}`}>
+                  <ProductImage {...node} />
+                </Link>
+              </GridItem>
+            ))}
+          </Grid>
+        </Container>
       )
     }}
   </Query>

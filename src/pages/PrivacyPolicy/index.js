@@ -1,5 +1,5 @@
 import React from 'react'
-import {Query} from 'react-apollo'
+import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 
 import Loader from '../../atoms/Loader'
@@ -19,12 +19,12 @@ const GET_PRIVACY_POLICY = gql`
 
 export default () => (
   <Query query={GET_PRIVACY_POLICY}>
-    {({error, loading, data}) => {
-      if(error) return (<p>Error loading Privacy Policy</p>)
+    {({ error, loading, data }) => {
+      if (error) return (<p>Error loading Privacy Policy</p>)
 
-      if(loading) return (<Loader />)
+      if (loading) return (<Loader />)
 
-      const {title, body} = data.shop.privacyPolicy
+      const { title, body } = data.shop.privacyPolicy
 
       return (
         <Container padding="0 20px" slim>

@@ -37,7 +37,7 @@ const Main = styled.div`
   }
 `
 
-export default ({children, ...props}) => (
+export default ({ children, ...props }) => (
   <Main>
     <Select {...props}>
       {children}
