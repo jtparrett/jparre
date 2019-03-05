@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 
+import Meta from '../../atoms/Meta'
 import Loader from '../../atoms/Loader'
 import Typography from '../../atoms/Typography'
 import Container from '../../atoms/Container'
@@ -54,6 +55,9 @@ export default ({ match }) => (
 
       return (
         <Container slim>
+          <Meta>
+            <title>{product.title}</title>
+          </Meta>
           <ProductImage {...product} />
           <ProductDetail {...product} />
           <Spacer>

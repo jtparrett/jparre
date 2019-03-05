@@ -3,6 +3,7 @@ import gql from 'graphql-tag'
 import { Query } from 'react-apollo'
 import { Link } from 'react-router-dom'
 
+import Meta from '../../atoms/Meta'
 import Loader from '../../atoms/Loader'
 import Container from '../../atoms/Container'
 import { Grid, GridItem } from '../../atoms/Grid'
@@ -42,6 +43,9 @@ export default () => (
 
       return (
         <Container>
+          <Meta>
+            <title>Products</title>
+          </Meta>
           <Grid>
             {data.shop.collectionByHandle.products.edges.map(({ node }) => (
               <GridItem key={node.id}>
