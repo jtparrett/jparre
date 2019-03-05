@@ -2,6 +2,7 @@ import React from 'react'
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 
+import Meta from '../../atoms/Meta'
 import Loader from '../../atoms/Loader'
 import Typography from '../../atoms/Typography'
 import Container from '../../atoms/Container'
@@ -28,6 +29,9 @@ export default () => (
 
       return (
         <Container padding="0 20px" slim>
+          <Meta>
+            <title>{title}</title>
+          </Meta>
           <Typography heading>{title}</Typography>
           <Typography marginTop>{body}</Typography>
         </Container>
