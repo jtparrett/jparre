@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 
 const Main = styled.div`
   position: relative;
@@ -9,7 +9,7 @@ const Main = styled.div`
     padding-top: 56%;
     display: block;
   }
-`
+`;
 
 const Iframe = styled.iframe`
   position: absolute;
@@ -17,10 +17,10 @@ const Iframe = styled.iframe`
   left: 0;
   width: 100%;
   height: 100%;
-`
+`;
 
-export default (props) => (
+export default props => (
   <Main>
     <Iframe {...props} frameBorder="0" allowFullScreen={true} />
   </Main>
-)
+);
